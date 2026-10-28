@@ -1,6 +1,6 @@
 {
   "name": "gladys-resol",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "RESOL solar and heating controllers (DeltaSol and others) for Gladys Assistant: temperatures, pumps, operating hours and heat quantities read locally through a KM2, DL2, DL2Plus or DL3. Read-only. Not affiliated with RESOL.",
   "type": "module",

@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-28
+
 ### Added
 
 - RESOL KM2, DL2, DL2Plus and DL3 read locally (device information, then the
@@ -27,3 +29,6 @@ the notes of the version's GitHub Release.
   counter in two units).
 - Refused credentials kept as a final stop; test button; stale VBus packets
   no longer published.
+
+[Unreleased]: https://github.com/LM1LC3N7/gladys-resol/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/LM1LC3N7/gladys-resol/releases/tag/v0.1.1
