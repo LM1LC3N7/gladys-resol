@@ -1,0 +1,5942 @@
+[
+  {
+    "packet": "0000_112e_0100",
+    "id": "020_8_0",
+    "unit": "WattHours",
+    "en": "Summe aller Energien",
+    "de": "Summe aller Energien",
+    "fr": "Summe aller Energien",
+    "counter": "energy"
+  },
+  {
+    "packet": "0000_112e_0100",
+    "id": "028_8_0",
+    "unit": "WattHours",
+    "en": "Summe aller positiven Energien",
+    "de": "Summe aller positiven Energien",
+    "fr": "Summe aller positiven Energien",
+    "counter": "energy"
+  },
+  {
+    "packet": "0000_112e_0100",
+    "id": "036_8_0",
+    "unit": "WattHours",
+    "en": "Summe aller negativer Energien",
+    "de": "Summe aller negativer Energien",
+    "fr": "Summe aller negativer Energien",
+    "counter": "energy"
+  },
+  {
+    "packet": "0000_4010_0100",
+    "id": "002_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_0053_0100",
+    "id": "080_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat In total",
+    "de": "Wärme Gesamt",
+    "fr": "Chaleur au total",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "004_4_0",
+    "unit": "WattHours",
+    "en": "Heat Today",
+    "de": "Wärme Heute",
+    "fr": "Chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat Yesterday",
+    "de": "Wärme Gestern",
+    "fr": "Chaleur hier",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat Week",
+    "de": "Wärme Woche",
+    "fr": "Chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat Previous week",
+    "de": "Wärme Vorwoche",
+    "fr": "Chaleur semaine dernière",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat Month",
+    "de": "Wärme Monat",
+    "fr": "Chaleur mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat Previuos month",
+    "de": "Wärme Vormonat",
+    "fr": "Chaleur mois dernier",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat Year",
+    "de": "Wärme Jahr",
+    "fr": "Chaleur année",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "032_4_0",
+    "unit": "WattHours",
+    "en": "Heat Previous year",
+    "de": "Wärme Vorjahr",
+    "fr": "Chaleur année dernière",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "036_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Volumen gesamt",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "040_4_0",
+    "unit": "Liters",
+    "en": "Volume today",
+    "de": "Volumen Heute",
+    "fr": "Volume aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "044_4_0",
+    "unit": "Liters",
+    "en": "Volume yesterday",
+    "de": "Volumen Gestern",
+    "fr": "Volume hier",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "048_4_0",
+    "unit": "Liters",
+    "en": "Volume week",
+    "de": "Volumen Woche",
+    "fr": "Volume semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "052_4_0",
+    "unit": "Liters",
+    "en": "Volume previous week",
+    "de": "Volumen Vorwoche",
+    "fr": "Volume semaine dernière",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "056_4_0",
+    "unit": "Liters",
+    "en": "Volume month",
+    "de": "Volumen Monat",
+    "fr": "Volume mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "060_4_0",
+    "unit": "Liters",
+    "en": "Volume previous month",
+    "de": "Volumen Vormonat",
+    "fr": "Volume mois dernier",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "064_4_0",
+    "unit": "Liters",
+    "en": "Volume year",
+    "de": "Volumen Jahr",
+    "fr": "Volume année",
+    "counter": null
+  },
+  {
+    "packet": "0010_1010_0100",
+    "id": "068_4_0",
+    "unit": "Liters",
+    "en": "Volume previous year",
+    "de": "Volumen Vorjahr",
+    "fr": "Volume année dernière",
+    "counter": null
+  },
+  {
+    "packet": "0010_1040_0100",
+    "id": "026_1_0",
+    "unit": "Hours",
+    "en": "Parameter Rise time",
+    "de": "Parameter Anstiegszeit",
+    "fr": "Paramètre Temps d'augmentation",
+    "counter": null
+  },
+  {
+    "packet": "0010_1051_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1056_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1056_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1056_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1057_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1057_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1057_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1058_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1058_0100",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1058_0100",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1058_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105a_0100",
+    "id": "012_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay pump",
+    "de": "Betriebssekunden Relais Pumpe",
+    "fr": "Secondes de fonctionnement relais pompe",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105a_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay FastOff",
+    "de": "Betriebssekunden Relais FastOff",
+    "fr": "Secondes de fonctionnement relais FastOff",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105b_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "h P1",
+    "de": "h P1",
+    "fr": "h P1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105b_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "h P2",
+    "de": "h P2",
+    "fr": "h P2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105b_0100",
+    "id": "016_4_0",
+    "unit": "KilowattHours",
+    "en": "kWh",
+    "de": "kWh",
+    "fr": "kWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_105b_0100",
+    "id": "020_4_0",
+    "unit": "MegawattHours",
+    "en": "MWh",
+    "de": "MWh",
+    "fr": "MWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_105d_0100",
+    "id": "010_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105d_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105d_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_105e_0100",
+    "id": "012_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105e_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105e_0100",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105e_0100",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_105e_0100",
+    "id": "044_2_0",
+    "unit": "Seconds",
+    "en": "TPlan Timer",
+    "de": "TPlan Timer",
+    "fr": "TPlan Timer",
+    "counter": null
+  },
+  {
+    "packet": "0010_1064_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat Wh",
+    "de": "Wärme Wh",
+    "fr": "Chaleur Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1064_0100",
+    "id": "008_2_0",
+    "unit": "KilowattHours",
+    "en": "Heat kWh",
+    "de": "Wärme kWh",
+    "fr": "Chaleur kWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1064_0100",
+    "id": "010_2_0",
+    "unit": "MegawattHours",
+    "en": "Heat MWh",
+    "de": "Wärme MWh",
+    "fr": "Chaleur MWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1064_0100",
+    "id": "006_2_0_1",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1117_0100",
+    "id": "010_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1117_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1117_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1119_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_111e_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_111e_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heating",
+    "de": "Heizung",
+    "fr": "Chauffage",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_111e_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_111e_0100",
+    "id": "056_4_0",
+    "unit": "WattHours",
+    "en": "Backup heating",
+    "de": "Nachheizung",
+    "fr": "Chauffage d'appoint",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_111e_0100",
+    "id": "064_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_111f_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Excess Wh",
+    "de": "Überschuss Wh",
+    "fr": "Excédent Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_111f_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heating Wh",
+    "de": "Heizung Wh",
+    "fr": "Chauffage Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_111f_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_111f_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_111f_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1120_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1120_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1120_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1121_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay",
+    "de": "Betriebsstunden Relais",
+    "fr": "Heures de fonc. relais",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1121_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1122_0100",
+    "id": "010_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1122_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1122_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Excess Wh",
+    "de": "Überschuss Wh",
+    "fr": "Excédent Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heating Wh",
+    "de": "Heizung Wh",
+    "fr": "Chauffage Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "084_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1123_0100",
+    "id": "088_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1127_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1127_0100",
+    "id": "018_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1127_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1129_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1129_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heating",
+    "de": "Heizung",
+    "fr": "Chauffage",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1129_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1129_0100",
+    "id": "056_4_0",
+    "unit": "WattHours",
+    "en": "Backup heating",
+    "de": "Nachheizung",
+    "fr": "Chauffage d'appoint",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1129_0100",
+    "id": "064_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_112f_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_112f_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heating",
+    "de": "Heizung",
+    "fr": "Chauffage",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_112f_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_112f_0100",
+    "id": "056_4_0",
+    "unit": "WattHours",
+    "en": "Backup heating",
+    "de": "Nachheizung",
+    "fr": "Chauffage d'appoint",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_112f_0100",
+    "id": "064_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1150_0100",
+    "id": "024_2_0",
+    "unit": "Seconds",
+    "en": "Circulation switch-on time",
+    "de": "Zirkulation Einschaltz.",
+    "fr": "Temps d'activation Circulation",
+    "counter": null
+  },
+  {
+    "packet": "0010_1150_0100",
+    "id": "026_2_0",
+    "unit": "Seconds",
+    "en": "Circulation blocking period",
+    "de": "Zirkulation Sperrzeit",
+    "fr": "Période blocage Circulation",
+    "counter": null
+  },
+  {
+    "packet": "0010_1150_0100",
+    "id": "028_2_0",
+    "unit": "Seconds",
+    "en": "Therm. Disinfection",
+    "de": "Therm. Desinfektion",
+    "fr": "Désinfection therm.",
+    "counter": null
+  },
+  {
+    "packet": "0010_1150_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "Operating time prim. pump",
+    "de": "Betriebszeit Primärp.",
+    "fr": "Temps de fonc. pompe prime",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1150_0100",
+    "id": "036_4_0",
+    "unit": "Seconds",
+    "en": "Operating time circulation",
+    "de": "Betriebszeit Zirkulation",
+    "fr": "Temps de fonc. circulation",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1162_0100",
+    "id": "012_4_0",
+    "unit": "CubicMeters",
+    "en": "Draw-off quantity in total",
+    "de": "Zapfmenge gesamt",
+    "fr": "Quantité puisée",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_1200_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1200_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1200_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1240_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1240_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1240_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1240_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1241_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1241_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueToday_Wh",
+    "de": "Wmz1_WertHeute_Wh",
+    "fr": "Wmz1_ValeurAujourd'hui_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_1241_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueWeek_Wh",
+    "de": "Wmz1_WertWoche_Wh",
+    "fr": "Wmz1_ValeurSemaine_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_1250_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "PWM P",
+    "de": "PWM P",
+    "fr": "PWM P",
+    "counter": null
+  },
+  {
+    "packet": "0010_1250_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "PWM 28",
+    "de": "PWM 28",
+    "fr": "PWM 28",
+    "counter": null
+  },
+  {
+    "packet": "0010_1250_0100",
+    "id": "044_4_0",
+    "unit": "WattHours",
+    "en": "Energy today",
+    "de": "Energie Heute",
+    "fr": "Énergie aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1250_0100",
+    "id": "048_4_0",
+    "unit": "WattHours",
+    "en": "Total energy",
+    "de": "Energie Gesamt",
+    "fr": "Energie au total",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1250_0100",
+    "id": "084_4_0",
+    "unit": "Liters",
+    "en": "Total draw-off quantity",
+    "de": "Zapfmenge Gesamt",
+    "fr": "Quantité totale puisée",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1250_0100",
+    "id": "088_4_0",
+    "unit": "Seconds",
+    "en": "Total operation",
+    "de": "Gesamtbetrieb",
+    "fr": "Fonctionnement total",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1260_0100",
+    "id": "008_4_0",
+    "unit": "Seconds",
+    "en": "PWM 28",
+    "de": "PWM 28",
+    "fr": "PWM 28",
+    "counter": null
+  },
+  {
+    "packet": "0010_1260_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Total energy",
+    "de": "Energie Gesamt",
+    "fr": "Energie au total",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1260_0100",
+    "id": "020_4_0",
+    "unit": "Liters",
+    "en": "Total draw-off quantity",
+    "de": "Zapfmenge Gesamt",
+    "fr": "Quantité totale puisée",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1260_0100",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Total operating time",
+    "de": "Betriebszeit Gesamt",
+    "fr": "Temps de fonctionnement au total",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "080_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating hours output A",
+    "de": "Betriebsstunden Ausgang A",
+    "fr": "Heures de fonctionnement sortie A",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "132_4_0",
+    "unit": "Hours",
+    "en": "Betriebsstunden Ausgang B",
+    "de": "Betriebsstunden Ausgang B",
+    "fr": "Betriebsstunden Ausgang B",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "044_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "048_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "052_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1270_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 5",
+    "de": "Betriebsstunden Relais 5",
+    "fr": "Heures de fonctionnement relais 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1271_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Heating",
+    "de": "Heizstab 1 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1271_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Backup heating",
+    "de": "Heizstab 1 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1272_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Heating",
+    "de": "Heizstab 2 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1272_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Backup heating",
+    "de": "Heizstab 2 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1273_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Heating",
+    "de": "Heizstab 3 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1273_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Backup heating",
+    "de": "Heizstab 3 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1274_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Operation",
+    "de": "Wärmepumpe Betriebsstunden Betrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1274_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Mains operation",
+    "de": "Wärmepumpe Betriebsstunden Netzbetrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1275_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Operation",
+    "de": "Wallbox Betriebsstunden Betrieb",
+    "fr": "Wallbox heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1275_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Mains operation",
+    "de": "Wallbox Betriebsstunden Netzbetrieb",
+    "fr": "Wallbox heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "032_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 1",
+    "de": "Wärmemenge WMZ 1",
+    "fr": "Quantité de chaleur CAL 1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "036_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 1",
+    "de": "Kältemenge WMZ 1",
+    "fr": "Quantité de froid CAL 1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "040_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 1",
+    "de": "Gesamtenergie WMZ 1",
+    "fr": "Energie au total CAL 1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "044_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 1",
+    "de": "Gesamtvolumen WMZ 1",
+    "fr": "Volume au total CAL 1",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "086_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 1 (today)",
+    "de": "Wärmemenge WMZ 1 heute",
+    "fr": "Heat quantity HQM 1 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "090_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 1 (today)",
+    "de": "Kältemenge WMZ 1 heute",
+    "fr": "Cold quantity HQM 1 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "094_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 1 (today)",
+    "de": "Gesamtenergie WMZ 1 heute",
+    "fr": "Total energy HQM 1 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "098_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 1 (today)",
+    "de": "Gesamtvolumen WMZ 1 heute",
+    "fr": "Total volume HQM 1 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "102_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 1 (week)",
+    "de": "Wärmemenge WMZ 1 Woche",
+    "fr": "Heat quantity HQM 1 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "106_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 1 (week)",
+    "de": "Kältemenge WMZ 1 Woche",
+    "fr": "Cold quantity HQM 1 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "110_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 1 (week)",
+    "de": "Gesamtenergie WMZ 1 Woche",
+    "fr": "Total energy HQM 1 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "114_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 1 (week)",
+    "de": "Gesamtvolumen WMZ 1 Woche",
+    "fr": "Total volume HQM 1 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "118_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 1 (month)",
+    "de": "Wärmemenge WMZ 1 Monat",
+    "fr": "Heat quantity HQM 1 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "122_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 1 (month)",
+    "de": "Kältemenge WMZ 1 Monat",
+    "fr": "Cold quantity HQM 1 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "126_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 1 (month)",
+    "de": "Gesamtenergie WMZ 1 Monat",
+    "fr": "Total energy HQM 1 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "130_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 1 (month)",
+    "de": "Gesamtvolumen WMZ 1 Monat",
+    "fr": "Total volume HQM 1 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "062_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 2",
+    "de": "Wärmemenge WMZ 2",
+    "fr": "Quantité de chaleur CAL 2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "066_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 2",
+    "de": "Kältemenge WMZ 2",
+    "fr": "Quantité de froid CAL 2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "070_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 2",
+    "de": "Gesamtenergie WMZ 2",
+    "fr": "Energie au total CAL 2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "074_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 2",
+    "de": "Gesamtvolumen WMZ 2",
+    "fr": "Volume au total CAL 2",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "134_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 2 (today)",
+    "de": "Wärmemenge WMZ 2 heute",
+    "fr": "Heat quantity HQM 2 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "138_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 2 (today)",
+    "de": "Kältemenge WMZ 2 heute",
+    "fr": "Cold quantity HQM 2 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "142_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 2 (today)",
+    "de": "Gesamtenergie WMZ 2 heute",
+    "fr": "Total energy HQM 2 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "146_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 2 (today)",
+    "de": "Gesamtvolumen WMZ 2 heute",
+    "fr": "Total volume HQM 2 (today)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "150_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 2 (week)",
+    "de": "Wärmemenge WMZ 2 Woche",
+    "fr": "Heat quantity HQM 2 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "154_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 2 (week)",
+    "de": "Kältemenge WMZ 2 Woche",
+    "fr": "Cold quantity HQM 2 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "158_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 2 (week)",
+    "de": "Gesamtenergie WMZ 2 Woche",
+    "fr": "Total energy HQM 2 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "162_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 2 (week)",
+    "de": "Gesamtvolumen WMZ 2 Woche",
+    "fr": "Total volume HQM 2 (week)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "166_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity HQM 2 (month)",
+    "de": "Wärmemenge WMZ 2 Monat",
+    "fr": "Heat quantity HQM 2 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "170_4_0",
+    "unit": "WattHours",
+    "en": "Cold quantity HQM 2 (month)",
+    "de": "Kältemenge WMZ 2 Monat",
+    "fr": "Cold quantity HQM 2 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "174_4_0",
+    "unit": "WattHours",
+    "en": "Total energy HQM 2 (month)",
+    "de": "Gesamtenergie WMZ 2 Monat",
+    "fr": "Total energy HQM 2 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1400_0100",
+    "id": "178_4_0",
+    "unit": "Liters",
+    "en": "Total volume HQM 2 (month)",
+    "de": "Gesamtvolumen WMZ 2 Monat",
+    "fr": "Total volume HQM 2 (month)",
+    "counter": null
+  },
+  {
+    "packet": "0010_1420_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1420_0100",
+    "id": "018_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1420_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_155a_0100",
+    "id": "012_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay pump",
+    "de": "Betriebssekunden Relais Pumpe",
+    "fr": "Secondes de fonctionnement relais pompe",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_155a_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "Betriebssekunden Heizstab",
+    "de": "Betriebssekunden Heizstab",
+    "fr": "Betriebssekunden Heizstab",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1600_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Value",
+    "de": "Wert",
+    "fr": "Valeur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1600_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "ValueToday",
+    "de": "WertHeute",
+    "fr": "ValeurAujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1600_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "ValueWeek",
+    "de": "WertWoche",
+    "fr": "ValeurSemaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity month",
+    "de": "Wärmemenge Monat",
+    "fr": "Quantité de chaleur",
+    "counter": null
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "024_4_0",
+    "unit": "Liters",
+    "en": "Volume today",
+    "de": "Volumen heute",
+    "fr": "Volume aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "028_4_0",
+    "unit": "Liters",
+    "en": "Volume week",
+    "de": "Volumen Woche",
+    "fr": "Volume semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1730_0100",
+    "id": "032_4_0",
+    "unit": "Liters",
+    "en": "Volume month",
+    "de": "Volumen Monat",
+    "fr": "Volume mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity month",
+    "de": "Wärmemenge Monat",
+    "fr": "Quantité de chaleur",
+    "counter": null
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "024_4_0",
+    "unit": "Liters",
+    "en": "Volume today",
+    "de": "Volumen heute",
+    "fr": "Volume aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "028_4_0",
+    "unit": "Liters",
+    "en": "Volume week",
+    "de": "Volumen Woche",
+    "fr": "Volume semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1930_0100",
+    "id": "032_4_0",
+    "unit": "Liters",
+    "en": "Volume month",
+    "de": "Volumen Monat",
+    "fr": "Volume mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "080_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating hours output A",
+    "de": "Betriebsstunden Ausgang A",
+    "fr": "Heures de fonctionnement sortie A",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "132_4_0",
+    "unit": "Hours",
+    "en": "Betriebsstunden Ausgang B",
+    "de": "Betriebsstunden Ausgang B",
+    "fr": "Betriebsstunden Ausgang B",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "044_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "048_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "052_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a30_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 5",
+    "de": "Betriebsstunden Relais 5",
+    "fr": "Heures de fonctionnement relais 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a31_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Heating",
+    "de": "Heizstab 1 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a31_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Backup heating",
+    "de": "Heizstab 1 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a32_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Heating",
+    "de": "Heizstab 2 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a32_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Backup heating",
+    "de": "Heizstab 2 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a33_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Heating",
+    "de": "Heizstab 3 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a33_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Backup heating",
+    "de": "Heizstab 3 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a34_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Operation",
+    "de": "Wärmepumpe Betriebsstunden Betrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a34_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Mains operation",
+    "de": "Wärmepumpe Betriebsstunden Netzbetrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a35_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Operation",
+    "de": "Wallbox Betriebsstunden Betrieb",
+    "fr": "Wallbox heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a35_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Mains operation",
+    "de": "Wallbox Betriebsstunden Netzbetrieb",
+    "fr": "Wallbox heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "080_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating hours output A",
+    "de": "Betriebsstunden Ausgang A",
+    "fr": "Heures de fonctionnement sortie A",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "132_4_0",
+    "unit": "Hours",
+    "en": "Betriebsstunden Ausgang B",
+    "de": "Betriebsstunden Ausgang B",
+    "fr": "Betriebsstunden Ausgang B",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "044_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "048_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "052_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a60_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 5",
+    "de": "Betriebsstunden Relais 5",
+    "fr": "Heures de fonctionnement relais 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a61_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Heating",
+    "de": "Heizstab 1 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a61_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Backup heating",
+    "de": "Heizstab 1 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a62_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Heating",
+    "de": "Heizstab 2 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a62_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Backup heating",
+    "de": "Heizstab 2 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a63_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Heating",
+    "de": "Heizstab 3 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a63_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Backup heating",
+    "de": "Heizstab 3 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a64_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Operation",
+    "de": "Wärmepumpe Betriebsstunden Betrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a64_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Mains operation",
+    "de": "Wärmepumpe Betriebsstunden Netzbetrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a65_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Operation",
+    "de": "Wallbox Betriebsstunden Betrieb",
+    "fr": "Wallbox heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1a65_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Mains operation",
+    "de": "Wallbox Betriebsstunden Netzbetrieb",
+    "fr": "Wallbox heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity month",
+    "de": "Wärmemenge Monat",
+    "fr": "Quantité de chaleur",
+    "counter": null
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "024_4_0",
+    "unit": "Liters",
+    "en": "Volume today",
+    "de": "Volumen heute",
+    "fr": "Volume aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "028_4_0",
+    "unit": "Liters",
+    "en": "Volume week",
+    "de": "Volumen Woche",
+    "fr": "Volume semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_1f30_0100",
+    "id": "032_4_0",
+    "unit": "Liters",
+    "en": "Volume month",
+    "de": "Volumen Monat",
+    "fr": "Volume mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Excess Wh",
+    "de": "Überschuss Wh",
+    "fr": "Excédent Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heating Wh",
+    "de": "Heizung Wh",
+    "fr": "Chauffage Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "084_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_1f61_0100",
+    "id": "088_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2170_0100",
+    "id": "006_2_0",
+    "unit": "Seconds",
+    "en": "Age (Radiation)",
+    "de": "Alter (Radonstrahlung)",
+    "fr": "Age (Radiation)",
+    "counter": null
+  },
+  {
+    "packet": "0010_2211_0100",
+    "id": "010_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2211_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2211_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2213_0100",
+    "id": "010_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2213_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2213_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2232_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2232_0100",
+    "id": "008_2_0",
+    "unit": "KilowattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2232_0100",
+    "id": "010_2_0",
+    "unit": "MegawattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2241_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Bilanz Heat quantity",
+    "de": "Bilanz Wärmemenge",
+    "fr": "Bilan quantité de chauleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2241_0100",
+    "id": "020_4_0",
+    "unit": "Hours",
+    "en": "Balance Duration P1 on",
+    "de": "Bilanz Dauer P1 an",
+    "fr": "Bilan durée P1 on",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2241_0100",
+    "id": "024_4_0",
+    "unit": "Hours",
+    "en": "Balance Duration P2 on",
+    "de": "Bilanz Dauer P2 an",
+    "fr": "Bilan durée P1 off",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2241_0100",
+    "id": "028_4_0",
+    "unit": "CubicMeters",
+    "en": "Draw-off quantity",
+    "de": "Zapfmenge",
+    "fr": "Quantité puisée",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_2251_0100",
+    "id": "040_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2251_0100",
+    "id": "048_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2251_0100",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2251_0100",
+    "id": "056_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2251_0100",
+    "id": "060_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2252_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2252_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueToday_Wh",
+    "de": "Wmz1_WertHeute_Wh",
+    "fr": "Wmz1_ValeurAujourd'hui_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_2252_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueWeek_Wh",
+    "de": "Wmz1_WertWoche_Wh",
+    "fr": "Wmz1_ValeurSemaine_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_2261_0100",
+    "id": "032_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2261_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay1",
+    "de": "Betriebsstunden Relais1",
+    "fr": "Heures de fonc. relais1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2261_0100",
+    "id": "044_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay2",
+    "de": "Betriebsstunden Relais2",
+    "fr": "Heures de fonc. relais2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2262_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2262_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueToday_Wh",
+    "de": "Wmz1_WertHeute_Wh",
+    "fr": "Wmz1_ValeurAujourd'hui_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_2262_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueWeek_Wh",
+    "de": "Wmz1_WertWoche_Wh",
+    "fr": "Wmz1_ValeurSemaine_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_2271_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2271_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2271_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2271_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2272_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Value",
+    "de": "Wert",
+    "fr": "Valeur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2272_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Value today",
+    "de": "Wert heute",
+    "fr": "Valeur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_2272_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Value week",
+    "de": "Wert Woche",
+    "fr": "Valeur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_2360_0100",
+    "id": "040_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2360_0100",
+    "id": "048_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2360_0100",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2360_0100",
+    "id": "056_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2360_0100",
+    "id": "060_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2362_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2362_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueToday_Wh",
+    "de": "Wmz1_WertHeute_Wh",
+    "fr": "Wmz1_ValeurAujourd'hui_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_2362_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueWeek_Wh",
+    "de": "Wmz1_WertWoche_Wh",
+    "fr": "Wmz1_ValeurSemaine_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "080_4_0",
+    "unit": "WattHours",
+    "en": "Excess",
+    "de": "Überschuss",
+    "fr": "Excédent",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating hours output A",
+    "de": "Betriebsstunden Ausgang A",
+    "fr": "Heures de fonctionnement sortie A",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "040_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "044_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "048_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "052_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2370_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 5",
+    "de": "Betriebsstunden Relais 5",
+    "fr": "Heures de fonctionnement relais 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2371_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Heating",
+    "de": "Heizstab 1 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2371_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 1 Operating hours Backup heating",
+    "de": "Heizstab 1 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 1 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2372_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Heating",
+    "de": "Heizstab 2 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2372_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 2 Operating hours Backup heating",
+    "de": "Heizstab 2 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 2 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2373_0100",
+    "id": "014_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Heating",
+    "de": "Heizstab 3 Betriebsstunden Heizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2373_0100",
+    "id": "018_4_0",
+    "unit": "Hours",
+    "en": "Immersion heater 3 Operating hours Backup heating",
+    "de": "Heizstab 3 Betriebsstunden Nachheizung",
+    "fr": "Résistance électrique 3 Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2374_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Operation",
+    "de": "Wärmepumpe Betriebsstunden Betrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2374_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Heat pump operating hours Mains operation",
+    "de": "Wärmepumpe Betriebsstunden Netzbetrieb",
+    "fr": "Pompe à chaleur heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2375_0100",
+    "id": "012_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Operation",
+    "de": "Wallbox Betriebsstunden Betrieb",
+    "fr": "Wallbox heures de fonctionnement Fonctionnem.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_2375_0100",
+    "id": "016_4_0",
+    "unit": "Hours",
+    "en": "Wallbox operating hours Mains operation",
+    "de": "Wallbox Betriebsstunden Netzbetrieb",
+    "fr": "Wallbox heures de fonctionnement Fonc. réseau",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3011_0100",
+    "id": "028_2_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity kWh",
+    "de": "Wärmemenge kWh",
+    "fr": "Quantité de chaleur kWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3011_0100",
+    "id": "030_2_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity MWh",
+    "de": "Wärmemenge MWh",
+    "fr": "Quantité de chaleur MWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3112_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3113_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3114_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3211_0100",
+    "id": "008_2_0",
+    "unit": "Hours",
+    "en": "Pump runtime R1",
+    "de": "Pumpenlaufzeit R1",
+    "fr": "Temps de fonctionnement Pompe R1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3221_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3221_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3231_0100",
+    "id": "008_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3251_0100",
+    "id": "008_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3271_0100",
+    "id": "020_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3311_0100",
+    "id": "006_2_0_1",
+    "unit": "KilowattHours",
+    "en": "Heat quantity (<= v1.01)",
+    "de": "Wärmemenge (<= v1.01)",
+    "fr": "Quantité de chaleur (<= v1.01)",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3311_0100",
+    "id": "012_2_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity (>= v1.02)",
+    "de": "Wärmemenge (>= v1.02)",
+    "fr": "Quantité de chaleur (>= v1.02)",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Excess Wh",
+    "de": "Überschuss Wh",
+    "fr": "Excédent Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heating Wh",
+    "de": "Heizung Wh",
+    "fr": "Chauffage Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds heating",
+    "de": "Betriebsstunden Heizung",
+    "fr": "Heures de fonctionnement Chauffage",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "060_4_0",
+    "unit": "Hours",
+    "en": "Operating seconds backup heating",
+    "de": "Betriebsstunden Nachheizung",
+    "fr": "Heures de fonctionnement Chauffage d'appoint",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "084_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 3",
+    "de": "Betriebsstunden Relais 3",
+    "fr": "Heures de fonc. relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3561_0100",
+    "id": "088_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 4",
+    "de": "Betriebsstunden Relais 4",
+    "fr": "Heures de fonc. relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity month",
+    "de": "Wärmemenge Monat",
+    "fr": "Quantité de chaleur",
+    "counter": null
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "024_4_0",
+    "unit": "Liters",
+    "en": "Volume today",
+    "de": "Volumen heute",
+    "fr": "Volume aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "028_4_0",
+    "unit": "Liters",
+    "en": "Volume week",
+    "de": "Volumen Woche",
+    "fr": "Volume semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_3630_0100",
+    "id": "032_4_0",
+    "unit": "Liters",
+    "en": "Volume month",
+    "de": "Volumen Monat",
+    "fr": "Volume mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_4111_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4111_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4211_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4211_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4211_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4212_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours R1",
+    "de": "Betriebsstunden R1",
+    "fr": "Heures de fonc. R1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4212_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours R2",
+    "de": "Betriebsstunden R2",
+    "fr": "Heures de fonc. R2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4212_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4213_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4213_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4213_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4214_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4214_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4214_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4221_0100",
+    "id": "020_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4223_0100",
+    "id": "020_2_0",
+    "unit": "Btus",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4224_0100",
+    "id": "020_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4231_0100",
+    "id": "024_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4231_0100",
+    "id": "038_2_0",
+    "unit": "CubicMeters",
+    "en": "Draw-off quantity",
+    "de": "Zapfmenge",
+    "fr": "Quantité puisée",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_4241_0100",
+    "id": "024_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4241_0100",
+    "id": "038_2_0",
+    "unit": "CubicMeters",
+    "en": "Maximum draw-off quantity",
+    "de": "Zapfmenge max.",
+    "fr": "Quantité puisée max.",
+    "counter": null
+  },
+  {
+    "packet": "0010_4252_0100",
+    "id": "012_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4252_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4252_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4265_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4265_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4265_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4278_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4278_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4278_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4279_0100",
+    "id": "012_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4279_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4279_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_427b_0100",
+    "id": "010_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_427b_0100",
+    "id": "014_2_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_427b_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4311_0100",
+    "id": "016_4_0",
+    "unit": "KilowattHours",
+    "en": "kWh",
+    "de": "kWh",
+    "fr": "kWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4321_0100",
+    "id": "016_3_0",
+    "unit": "Seconds",
+    "en": "Filter runtime today",
+    "de": "Filterlaufzeit heute",
+    "fr": "Temps de filtrage aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_4321_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4720_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4720_0100",
+    "id": "028_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4721_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Value",
+    "de": "Wert",
+    "fr": "Valeur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4721_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Value (today)",
+    "de": "Wert (heute)",
+    "fr": "Valeur (ahjourd'hui)",
+    "counter": null
+  },
+  {
+    "packet": "0010_4721_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Value (week)",
+    "de": "Wert (Woche)",
+    "fr": "Valeur (semaine)",
+    "counter": null
+  },
+  {
+    "packet": "0010_4730_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4730_0100",
+    "id": "028_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4730_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_4731_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Value",
+    "de": "Wert",
+    "fr": "Valeur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_4731_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Value (today)",
+    "de": "Wert (heute)",
+    "fr": "Valeur (ahjourd'hui)",
+    "counter": null
+  },
+  {
+    "packet": "0010_4731_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Value (week)",
+    "de": "Wert (Woche)",
+    "fr": "Valeur (semaine)",
+    "counter": null
+  },
+  {
+    "packet": "0010_4a00_0100",
+    "id": "016_4_0",
+    "unit": "KilowattHours",
+    "en": "kWh",
+    "de": "kWh",
+    "fr": "kWh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5111_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5112_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5121_0100",
+    "id": "028_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5210_0100",
+    "id": "016_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5221_0100",
+    "id": "018_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5231_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5231_0100",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5231_0100",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5231_0100",
+    "id": "028_4_0",
+    "unit": "CubicMeters",
+    "en": "Draw-off quantity",
+    "de": "Zapfmenge",
+    "fr": "Quantité puisée",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "064_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "068_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "072_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "076_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds pot.-free relay",
+    "de": "Betriebssekunden Relais pot.frei",
+    "fr": "Secondes de fonctionnement rel. sans pot.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "080_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds output PWM1",
+    "de": "Betriebssekunden Ausgang PWM 1",
+    "fr": "Secondes de fonctionnement sortie PWM1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "084_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds output PWM2",
+    "de": "Betriebssekunden Ausgang PWM 2",
+    "fr": "Secondes de fonctionnement sortie PWM2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_5251_0100",
+    "id": "096_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5311_0100",
+    "id": "014_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5351_0100",
+    "id": "096_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5420_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Value",
+    "de": "Wert",
+    "fr": "Valeur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_5420_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Value (today)",
+    "de": "Wert (heute)",
+    "fr": "Valeur (ahjourd'hui)",
+    "counter": null
+  },
+  {
+    "packet": "0010_5420_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Value (week)",
+    "de": "Wert (Woche)",
+    "fr": "Valeur (semaine)",
+    "counter": null
+  },
+  {
+    "packet": "0010_5510_0100",
+    "id": "008_2_0",
+    "unit": "Hours",
+    "en": "Operating hours",
+    "de": "Betriebsstunden",
+    "fr": "Heures de fonc.",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7101_0100",
+    "id": "048_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7101_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7101_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7101_0100",
+    "id": "036_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7101_0100",
+    "id": "040_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7130_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7130_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7130_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7130_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7150_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7150_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7150_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7160_0100",
+    "id": "024_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7160_0100",
+    "id": "060_2_0",
+    "unit": "WattHours",
+    "en": "Heat 2",
+    "de": "Wärme 2",
+    "fr": "Chaleur 2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7160_0100",
+    "id": "068_2_0",
+    "unit": "WattHours",
+    "en": "Heat 3",
+    "de": "Wärme 3",
+    "fr": "Chaleur 3",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7161_0100",
+    "id": "002_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7161_0100",
+    "id": "003_1_0",
+    "unit": "Seconds",
+    "en": "Mixer break time",
+    "de": "Mischerpausenzeit",
+    "fr": "Pause vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7162_0100",
+    "id": "002_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7162_0100",
+    "id": "003_1_0",
+    "unit": "Seconds",
+    "en": "Mixer break time",
+    "de": "Mischerpausenzeit",
+    "fr": "Pause vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7163_0100",
+    "id": "002_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7163_0100",
+    "id": "003_1_0",
+    "unit": "Seconds",
+    "en": "Mixer break time",
+    "de": "Mischerpausenzeit",
+    "fr": "Pause vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_717a_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_717a_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_717a_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_717a_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_717b_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_717b_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_717b_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_717b_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7210_0100",
+    "id": "024_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7211_0100",
+    "id": "002_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7211_0100",
+    "id": "003_1_0",
+    "unit": "Seconds",
+    "en": "Mixer break time",
+    "de": "Mischerpausenzeit",
+    "fr": "Pause vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7212_0100",
+    "id": "002_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7212_0100",
+    "id": "003_1_0",
+    "unit": "Seconds",
+    "en": "Mixer break time",
+    "de": "Mischerpausenzeit",
+    "fr": "Pause vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7213_0100",
+    "id": "002_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7213_0100",
+    "id": "003_1_0",
+    "unit": "Seconds",
+    "en": "Mixer break time",
+    "de": "Mischerpausenzeit",
+    "fr": "Pause vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "0010_7221_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7231_0100",
+    "id": "024_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "000_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R1",
+    "de": "Betriebssekunden R1",
+    "fr": "Secondes de fonctionnement R1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "004_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R2",
+    "de": "Betriebssekunden R2",
+    "fr": "Secondes de fonctionnement R2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "008_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R3",
+    "de": "Betriebssekunden R3",
+    "fr": "Secondes de fonctionnement R3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "012_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R4",
+    "de": "Betriebssekunden R4",
+    "fr": "Secondes de fonctionnement R4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R5",
+    "de": "Betriebssekunden R5",
+    "fr": "Secondes de fonctionnement R5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R6",
+    "de": "Betriebssekunden R6",
+    "fr": "Secondes de fonctionnement R6",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R7",
+    "de": "Betriebssekunden R7",
+    "fr": "Secondes de fonctionnement R7",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R8",
+    "de": "Betriebssekunden R8",
+    "fr": "Secondes de fonctionnement R8",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds R9",
+    "de": "Betriebssekunden R9",
+    "fr": "Secondes de fonctionnement R9",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "036_4_0",
+    "unit": "Liters",
+    "en": "Volume 1",
+    "de": "Volumen 1",
+    "fr": "Volume 1",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7315_0100",
+    "id": "040_4_0",
+    "unit": "Liters",
+    "en": "Volume 2",
+    "de": "Volumen 2",
+    "fr": "Volume 2",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7316_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7326_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7341_0100",
+    "id": "032_4_0",
+    "unit": "Liters",
+    "en": "SensorVolume flow_Regler_GAS1_TotalWert_L",
+    "de": "SensorVolumenstrom_Regler_GAS1_TotalWert_L",
+    "fr": "SensorVolume flow_Regler_GAS1_TotalWert_L",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7341_0100",
+    "id": "036_4_0",
+    "unit": "Liters",
+    "en": "SensorVolume flow_Regler_GAS2_TotalWert_L",
+    "de": "SensorVolumenstrom_Regler_GAS2_TotalWert_L",
+    "fr": "SensorVolume flow_Regler_GAS2_TotalWert_L",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7341_0100",
+    "id": "040_4_0",
+    "unit": "Liters",
+    "en": "SensorVolume flow_Regler_GDS1_TotalWert_L",
+    "de": "SensorVolumenstrom_Regler_GDS1_TotalWert_L",
+    "fr": "SensorVolume flow_Regler_GDS1_TotalWert_L",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7341_0100",
+    "id": "044_4_0",
+    "unit": "Liters",
+    "en": "SensorVolume flow_Regler_GDS2_TotalWert_L",
+    "de": "SensorVolumenstrom_Regler_GDS2_TotalWert_L",
+    "fr": "SensorVolume flow_Regler_GDS2_TotalWert_L",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7341_0100",
+    "id": "084_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7341_0100",
+    "id": "088_4_0",
+    "unit": "WattHours",
+    "en": "Wmz2_Value_Wh",
+    "de": "Wmz2_Wert_Wh",
+    "fr": "Wmz2_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7370_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7370_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7370_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "028_2_0",
+    "unit": "Hours",
+    "en": "Operating hours 1",
+    "de": "Betriebsstunden 1",
+    "fr": "Heures de fonc. 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "030_2_0",
+    "unit": "Hours",
+    "en": "Operating hours 2",
+    "de": "Betriebsstunden 2",
+    "fr": "Heures de fonc. 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "032_2_0",
+    "unit": "Hours",
+    "en": "Operating hours 3",
+    "de": "Betriebsstunden 3",
+    "fr": "Heures de fonc. 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "034_2_0",
+    "unit": "Hours",
+    "en": "Operating hours 4",
+    "de": "Betriebsstunden 4",
+    "fr": "Heures de fonc. 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "036_2_0",
+    "unit": "Hours",
+    "en": "Operating hours 5",
+    "de": "Betriebsstunden 5",
+    "fr": "Heures de fonc. 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "038_2_0",
+    "unit": "Hours",
+    "en": "Operating hours 6",
+    "de": "Betriebsstunden 6",
+    "fr": "Heures de fonc. 6",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7411_0100",
+    "id": "040_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7421_0100",
+    "id": "048_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7421_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7421_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7421_0100",
+    "id": "036_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7421_0100",
+    "id": "040_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7422_0100",
+    "id": "048_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7422_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7422_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7422_0100",
+    "id": "036_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7422_0100",
+    "id": "040_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7428_0100",
+    "id": "048_4_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7428_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "OSR 1",
+    "de": "BSR 1",
+    "fr": "HFR1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7428_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "OSR 2",
+    "de": "BSR 2",
+    "fr": "HFR2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7428_0100",
+    "id": "036_4_0",
+    "unit": "Seconds",
+    "en": "OSR 3",
+    "de": "BSR 3",
+    "fr": "HFR3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7428_0100",
+    "id": "040_4_0",
+    "unit": "Seconds",
+    "en": "OSR 4",
+    "de": "BSR 4",
+    "fr": "HFR4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7441_0100",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7441_0100",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7441_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7442_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_Value_Wh",
+    "de": "Wmz1_Wert_Wh",
+    "fr": "Wmz1_Valeur_Wh",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7442_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueToday_Wh",
+    "de": "Wmz1_WertHeute_Wh",
+    "fr": "Wmz1_ValeurAujourd'hui_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_7442_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Wmz1_ValueWeek_Wh",
+    "de": "Wmz1_WertWoche_Wh",
+    "fr": "Wmz1_ValeurSemaine_Wh",
+    "counter": null
+  },
+  {
+    "packet": "0010_7511_0100",
+    "id": "028_4_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity S,p",
+    "de": "Wärmemenge S,p",
+    "fr": "Quantité de chaleur S,p",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7511_0100",
+    "id": "032_4_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity S,s",
+    "de": "Wärmemenge S,s",
+    "fr": "Quantité de chaleur S,s",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7511_0100",
+    "id": "042_2_0",
+    "unit": "Seconds",
+    "en": "Operating sec. heat pump",
+    "de": "Betriebssekunden WP",
+    "fr": "Temps de fonct. en secondes PAC",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7511_0100",
+    "id": "044_4_0",
+    "unit": "Seconds",
+    "en": "Time period HP / 24h",
+    "de": "Zeitraum WP / 24h",
+    "fr": "Période PAC / 24h",
+    "counter": null
+  },
+  {
+    "packet": "0010_7511_0100",
+    "id": "048_4_0",
+    "unit": "Seconds",
+    "en": "Heat pump runtime / 24 h",
+    "de": "Laufzeit WP / 24h",
+    "fr": "Temps de fonc. PAC / 24 h",
+    "counter": null
+  },
+  {
+    "packet": "0010_7512_0100",
+    "id": "000_4_0",
+    "unit": "Seconds",
+    "en": "t-Sp",
+    "de": "t-Sp",
+    "fr": "t-Sp",
+    "counter": null
+  },
+  {
+    "packet": "0010_7512_0100",
+    "id": "004_4_0",
+    "unit": "Seconds",
+    "en": "t-Ss",
+    "de": "t-Ss",
+    "fr": "t-Ss",
+    "counter": null
+  },
+  {
+    "packet": "0010_7512_0100",
+    "id": "008_4_0",
+    "unit": "Seconds",
+    "en": "Heat pump runtime",
+    "de": "Laufzeit WP",
+    "fr": "Temps de fonc. PAC",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7512_0100",
+    "id": "016_4_0",
+    "unit": "Seconds",
+    "en": "t-WP-Ss",
+    "de": "t-WP-Ss",
+    "fr": "t-PAC-Ss",
+    "counter": null
+  },
+  {
+    "packet": "0010_7512_0100",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "t-Ps",
+    "de": "t-Ps",
+    "fr": "t-Ps",
+    "counter": null
+  },
+  {
+    "packet": "0010_7513_0100",
+    "id": "040_4_0",
+    "unit": "KilowattHours",
+    "en": "Q S,p",
+    "de": "Q S,p",
+    "fr": "Q S,p",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7513_0100",
+    "id": "044_4_0",
+    "unit": "KilowattHours",
+    "en": "Q S,s",
+    "de": "Q S,s",
+    "fr": "Q S,s",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7521_0100",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7521_0100",
+    "id": "032_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7521_0100",
+    "id": "036_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7521_0100",
+    "id": "040_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7521_0100",
+    "id": "044_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 5",
+    "de": "Betriebssekunden Relais 5",
+    "fr": "Secondes de fonctionnement relais 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7521_0100",
+    "id": "052_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7530_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7530_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7530_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "076_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 1",
+    "de": "Betriebssekunden Relais 1",
+    "fr": "Secondes de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "080_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 2",
+    "de": "Betriebssekunden Relais 2",
+    "fr": "Secondes de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "084_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 3",
+    "de": "Betriebssekunden Relais 3",
+    "fr": "Secondes de fonctionnement relais 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "088_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 4",
+    "de": "Betriebssekunden Relais 4",
+    "fr": "Secondes de fonctionnement relais 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "092_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds relay 5",
+    "de": "Betriebssekunden Relais 5",
+    "fr": "Secondes de fonctionnement relais 5",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "096_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds output PWM1",
+    "de": "Betriebssekunden Ausgang PWM 1",
+    "fr": "Secondes de fonctionnement sortie PWM1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "100_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds output PWM2",
+    "de": "Betriebssekunden Ausgang PWM 2",
+    "fr": "Secondes de fonctionnement sortie PWM2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "104_4_0",
+    "unit": "Seconds",
+    "en": "W O3",
+    "de": "Betriebssekunden Ausgang PWM 3",
+    "fr": "Secondes de fonctionnement sortie PWM 3",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "108_4_0",
+    "unit": "Seconds",
+    "en": "W O4",
+    "de": "Betriebssekunden Ausgang PWM 4",
+    "fr": "Secondes de fonctionnement sortie PWM 4",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7541_0100",
+    "id": "112_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7611_0100",
+    "id": "028_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7622_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7712_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7722_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_772a_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7731_0100",
+    "id": "020_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7751_0100",
+    "id": "028_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7761_0100",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Circulation time counter",
+    "de": "Umwaelzzeitzähler",
+    "fr": "Compteur horaire circulation",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7761_0100",
+    "id": "056_4_0",
+    "unit": "Seconds",
+    "en": "Extra filter time",
+    "de": "Extra-Filterzeit",
+    "fr": "Temps filtre prolongé",
+    "counter": null
+  },
+  {
+    "packet": "0010_7761_0100",
+    "id": "060_4_0",
+    "unit": "Seconds",
+    "en": "Pump monitoring",
+    "de": "Pumpenüberwachung",
+    "fr": "Contrôle Pompe",
+    "counter": null
+  },
+  {
+    "packet": "0010_7761_0100",
+    "id": "064_4_0",
+    "unit": "Seconds",
+    "en": "Solar min. on/off",
+    "de": "Solar Min. Ein/Aus",
+    "fr": "Solaire min. on/off",
+    "counter": null
+  },
+  {
+    "packet": "0010_7762_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "012_2_0",
+    "unit": "WattHours",
+    "en": "Heat",
+    "de": "Wärme",
+    "fr": "Chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "020_4_0",
+    "unit": "CubicMeters",
+    "en": "Volume",
+    "de": "Volumen",
+    "fr": "Volume",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "028_2_0",
+    "unit": "WattHours",
+    "en": "Heat2",
+    "de": "Wärme2",
+    "fr": "Chaleur2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "040_2_0",
+    "unit": "WattHours",
+    "en": "Heat3",
+    "de": "Wärme3",
+    "fr": "Chaleur3",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "052_2_0",
+    "unit": "WattHours",
+    "en": "Heat4",
+    "de": "Wärme4",
+    "fr": "Chaleur4",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "064_2_0",
+    "unit": "WattHours",
+    "en": "Heat5",
+    "de": "Wärme5",
+    "fr": "Chaleur5",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "072_4_0",
+    "unit": "WattHours",
+    "en": "Current1",
+    "de": "Strom1",
+    "fr": "Tarif1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "076_4_0",
+    "unit": "KilowattHours",
+    "en": "Current1",
+    "de": "Strom1",
+    "fr": "Tarif1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "080_4_0",
+    "unit": "KilowattHours",
+    "en": "Current2",
+    "de": "Strom2",
+    "fr": "Tarif2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "084_4_0",
+    "unit": "CubicMeters",
+    "en": "Gas1",
+    "de": "Gas1",
+    "fr": "Gaz1",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "088_4_0",
+    "unit": "KilowattHours",
+    "en": "Therm. energy1",
+    "de": "Therm. Energie1",
+    "fr": "Energie therm.1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7774_0100",
+    "id": "092_4_0",
+    "unit": "KilowattHours",
+    "en": "Therm. energy2",
+    "de": "Therm. Energie2",
+    "fr": "Energie therm.2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7822_0100",
+    "id": "006_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7830_0100",
+    "id": "026_1_0",
+    "unit": "Hours",
+    "en": "Parameter Rise time",
+    "de": "Parameter Anstiegszeit",
+    "fr": "Paramètre Temps d'augmentation",
+    "counter": null
+  },
+  {
+    "packet": "0010_7840_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 1",
+    "de": "Betriebsstunden Relais 1",
+    "fr": "Heures de fonc. relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7840_0100",
+    "id": "036_4_0",
+    "unit": "Hours",
+    "en": "Operating hours relay 2",
+    "de": "Betriebsstunden Relais 2",
+    "fr": "Heures de fonc. relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "0010_7841_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7930_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7930_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7930_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7930_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7d04_0100",
+    "id": "024_2_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7d04_0100",
+    "id": "038_2_0",
+    "unit": "CubicMeters",
+    "en": "Draw-off quantity",
+    "de": "Zapfmenge",
+    "fr": "Quantité puisée",
+    "counter": "volume_m3"
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "000_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity today",
+    "de": "Wärmemenge heute",
+    "fr": "Quantité de chaleur aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "012_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity week",
+    "de": "Wärmemenge Woche",
+    "fr": "Quantité de chaleur semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity month",
+    "de": "Wärmemenge Monat",
+    "fr": "Quantité de chaleur",
+    "counter": null
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "016_4_0",
+    "unit": "Liters",
+    "en": "Volume in total",
+    "de": "Gesamtvolumen",
+    "fr": "Volume au total",
+    "counter": "volume_l"
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "024_4_0",
+    "unit": "Liters",
+    "en": "Volume today",
+    "de": "Volumen heute",
+    "fr": "Volume aujourd'hui",
+    "counter": null
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "028_4_0",
+    "unit": "Liters",
+    "en": "Volume week",
+    "de": "Volumen Woche",
+    "fr": "Volume semaine",
+    "counter": null
+  },
+  {
+    "packet": "0010_7e30_0100",
+    "id": "032_4_0",
+    "unit": "Liters",
+    "en": "Volume month",
+    "de": "Volumen Monat",
+    "fr": "Volume mois",
+    "counter": null
+  },
+  {
+    "packet": "0010_7f61_0100",
+    "id": "000_4_0",
+    "unit": "Seconds",
+    "en": "Seconds no.",
+    "de": "SekNr",
+    "fr": "N° secondes",
+    "counter": null
+  },
+  {
+    "packet": "0010_7f61_0100",
+    "id": "056_4_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity 1",
+    "de": "Wärmemenge 1",
+    "fr": "Quantité de chaleur 1",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7f61_0100",
+    "id": "060_4_0",
+    "unit": "KilowattHours",
+    "en": "Heat quantity 2",
+    "de": "Wärmemenge 2",
+    "fr": "Quantité de chaleur 2",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7f61_0100",
+    "id": "068_2_0",
+    "unit": "WattHours",
+    "en": "Solar heat",
+    "de": "Solarwärme",
+    "fr": "Chaleur solaire",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7f62_0100",
+    "id": "024_4_0",
+    "unit": "Hours",
+    "en": "dt meas",
+    "de": "dt-mess",
+    "fr": "dt mesuré",
+    "counter": null
+  },
+  {
+    "packet": "0010_7f62_0100",
+    "id": "028_4_0",
+    "unit": "Hours",
+    "en": "dt estimated2",
+    "de": "dt-erw2",
+    "fr": "dt estimé2",
+    "counter": null
+  },
+  {
+    "packet": "0010_7f62_0100",
+    "id": "032_4_0",
+    "unit": "Hours",
+    "en": "dt estimated",
+    "de": "dt-erw",
+    "fr": "dt estimé",
+    "counter": null
+  },
+  {
+    "packet": "0010_7f65_0100",
+    "id": "028_2_0",
+    "unit": "WattHours",
+    "en": "Solar heat_1s",
+    "de": "Solarwärme_1s",
+    "fr": "Chaleur solaire_1s",
+    "counter": "energy"
+  },
+  {
+    "packet": "0010_7f71_0100",
+    "id": "020_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0015_105f_0100",
+    "id": "008_4_0",
+    "unit": "WattHours",
+    "en": "SD3: Heat quantity",
+    "de": "SD3: Wärmemenge",
+    "fr": "SD3 : Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0015_105f_0100",
+    "id": "044_4_0",
+    "unit": "WattHours",
+    "en": "WM: Heat quantity",
+    "de": "WM: Wärmemenge",
+    "fr": "WM: Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "0015_105f_0100",
+    "id": "052_4_0",
+    "unit": "Hours",
+    "en": "BS: Operating hours relay 1",
+    "de": "BS: Betriebsstunden Relais 1",
+    "fr": "BS: Heures de fonctionnement relais 1",
+    "counter": "hours"
+  },
+  {
+    "packet": "0015_105f_0100",
+    "id": "056_4_0",
+    "unit": "Hours",
+    "en": "BS: Operating hours relay 2",
+    "de": "BS: Betriebsstunden Relais 2",
+    "fr": "BS: Heures de fonctionnement relais 2",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1261_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Master: Primary pump operating seconds",
+    "de": "Master: Primärpumpe Betriebssekunden",
+    "fr": "Maître : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1261_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Master: Station operating seconds",
+    "de": "Master: Stationsbetriebssekunden",
+    "fr": "Maître : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1262_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Primary pump operating seconds",
+    "de": "Slave 1: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1262_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Station operating seconds",
+    "de": "Slave 1: Stationsbetriebssekunden",
+    "fr": "Esclave 1 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1263_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Primary pump operating seconds",
+    "de": "Slave 2: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1263_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Station operating seconds",
+    "de": "Slave 2: Stationsbetriebssekunden",
+    "fr": "Esclave 2 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1264_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Primary pump operating seconds",
+    "de": "Slave 3: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1261_1264_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Station operating seconds",
+    "de": "Slave 3: Stationsbetriebssekunden",
+    "fr": "Esclave 3 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1261_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Master: Primary pump operating seconds",
+    "de": "Master: Primärpumpe Betriebssekunden",
+    "fr": "Maître : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1261_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Master: Station operating seconds",
+    "de": "Master: Stationsbetriebssekunden",
+    "fr": "Maître : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1262_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Primary pump operating seconds",
+    "de": "Slave 1: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1262_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Station operating seconds",
+    "de": "Slave 1: Stationsbetriebssekunden",
+    "fr": "Esclave 1 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1263_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Primary pump operating seconds",
+    "de": "Slave 2: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1263_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Station operating seconds",
+    "de": "Slave 2: Stationsbetriebssekunden",
+    "fr": "Esclave 2 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1264_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Primary pump operating seconds",
+    "de": "Slave 3: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1262_1264_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Station operating seconds",
+    "de": "Slave 3: Stationsbetriebssekunden",
+    "fr": "Esclave 3 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1261_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Master: Primary pump operating seconds",
+    "de": "Master: Primärpumpe Betriebssekunden",
+    "fr": "Maître : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1261_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Master: Station operating seconds",
+    "de": "Master: Stationsbetriebssekunden",
+    "fr": "Maître : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1262_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Primary pump operating seconds",
+    "de": "Slave 1: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1262_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Station operating seconds",
+    "de": "Slave 1: Stationsbetriebssekunden",
+    "fr": "Esclave 1 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1263_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Primary pump operating seconds",
+    "de": "Slave 2: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1263_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Station operating seconds",
+    "de": "Slave 2: Stationsbetriebssekunden",
+    "fr": "Esclave 2 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1264_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Primary pump operating seconds",
+    "de": "Slave 3: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1263_1264_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Station operating seconds",
+    "de": "Slave 3: Stationsbetriebssekunden",
+    "fr": "Esclave 3 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1261_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Master: Primary pump operating seconds",
+    "de": "Master: Primärpumpe Betriebssekunden",
+    "fr": "Maître : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1261_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Master: Station operating seconds",
+    "de": "Master: Stationsbetriebssekunden",
+    "fr": "Maître : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1262_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Primary pump operating seconds",
+    "de": "Slave 1: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1262_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 1: Station operating seconds",
+    "de": "Slave 1: Stationsbetriebssekunden",
+    "fr": "Esclave 1 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1263_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Primary pump operating seconds",
+    "de": "Slave 2: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1263_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 2: Station operating seconds",
+    "de": "Slave 2: Stationsbetriebssekunden",
+    "fr": "Esclave 2 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1264_0301",
+    "id": "052_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Primary pump operating seconds",
+    "de": "Slave 3: Primärpumpe Betriebssekunden",
+    "fr": "Esclave 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1264_1264_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Slave 3: Station operating seconds",
+    "de": "Slave 3: Stationsbetriebssekunden",
+    "fr": "Esclave 3 : Secondes de fonctionnement de la station",
+    "counter": "hours"
+  },
+  {
+    "packet": "1521_1521_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 1: Primary pump operating seconds",
+    "de": "Station 1: Primaerpumpe Betriebssekunden",
+    "fr": "Station 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1521_1522_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 2: Primary pump operating seconds",
+    "de": "Station 2: Primaerpumpe Betriebssekunden",
+    "fr": "Station 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1521_1523_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 3: Primary pump operating seconds",
+    "de": "Station 3: Primaerpumpe Betriebssekunden",
+    "fr": "Station 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1521_1524_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 4: Primary pump operating seconds",
+    "de": "Station 4: Primaerpumpe Betriebssekunden",
+    "fr": "Station 4 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1522_1521_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 1: Primary pump operating seconds",
+    "de": "Station 1: Primaerpumpe Betriebssekunden",
+    "fr": "Station 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1522_1522_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 2: Primary pump operating seconds",
+    "de": "Station 2: Primaerpumpe Betriebssekunden",
+    "fr": "Station 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1522_1523_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 3: Primary pump operating seconds",
+    "de": "Station 3: Primaerpumpe Betriebssekunden",
+    "fr": "Station 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1522_1524_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 4: Primary pump operating seconds",
+    "de": "Station 4: Primaerpumpe Betriebssekunden",
+    "fr": "Station 4 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1523_1521_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 1: Primary pump operating seconds",
+    "de": "Station 1: Primaerpumpe Betriebssekunden",
+    "fr": "Station 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1523_1522_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 2: Primary pump operating seconds",
+    "de": "Station 2: Primaerpumpe Betriebssekunden",
+    "fr": "Station 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1523_1523_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 3: Primary pump operating seconds",
+    "de": "Station 3: Primaerpumpe Betriebssekunden",
+    "fr": "Station 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1523_1524_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 4: Primary pump operating seconds",
+    "de": "Station 4: Primaerpumpe Betriebssekunden",
+    "fr": "Station 4 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1524_1521_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 1: Primary pump operating seconds",
+    "de": "Station 1: Primaerpumpe Betriebssekunden",
+    "fr": "Station 1 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1524_1522_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 2: Primary pump operating seconds",
+    "de": "Station 2: Primaerpumpe Betriebssekunden",
+    "fr": "Station 2 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1524_1523_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 3: Primary pump operating seconds",
+    "de": "Station 3: Primaerpumpe Betriebssekunden",
+    "fr": "Station 3 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "1524_1524_0112",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Station 4: Primary pump operating seconds",
+    "de": "Station 4: Primaerpumpe Betriebssekunden",
+    "fr": "Station 4 : Pompe primaire secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "4420_0000_0200",
+    "id": "012_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "5261_5260_0301",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "5261_5260_0301",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds",
+    "de": "Betriebssekunden",
+    "fr": "Secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "5261_5260_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds station",
+    "de": "Stationsbetriebssekunden",
+    "fr": "Secondes de fonctionnement station",
+    "counter": "hours"
+  },
+  {
+    "packet": "5261_5260_0301",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating hours in total",
+    "de": "Gesamtbetriebsstunden",
+    "fr": "Heures de fonctionnement au total",
+    "counter": "hours"
+  },
+  {
+    "packet": "5361_5360_0301",
+    "id": "016_4_0",
+    "unit": "WattHours",
+    "en": "Heat quantity",
+    "de": "Wärmemenge",
+    "fr": "Quantité de chaleur",
+    "counter": "energy"
+  },
+  {
+    "packet": "5361_5360_0301",
+    "id": "020_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds",
+    "de": "Betriebssekunden",
+    "fr": "Secondes de fonctionnement",
+    "counter": "hours"
+  },
+  {
+    "packet": "5361_5360_0301",
+    "id": "024_4_0",
+    "unit": "Seconds",
+    "en": "Operating seconds station",
+    "de": "Stationsbetriebssekunden",
+    "fr": "Secondes de fonctionnement station",
+    "counter": "hours"
+  },
+  {
+    "packet": "5361_5360_0301",
+    "id": "028_4_0",
+    "unit": "Seconds",
+    "en": "Operating hours in total",
+    "de": "Gesamtbetriebsstunden",
+    "fr": "Heures de fonctionnement au total",
+    "counter": "hours"
+  },
+  {
+    "packet": "6510_0000_0200",
+    "id": "012_1_0",
+    "unit": "Seconds",
+    "en": "Mixer runtime",
+    "de": "Mischerlaufzeit",
+    "fr": "Temps de fonc. vanne mél.",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "001_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 1 R1",
+    "de": "Laufzeit 1 R1",
+    "fr": "Temps de fonc. 1 R1",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "005_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 2 R1",
+    "de": "Laufzeit 2 R1",
+    "fr": "Temps de fonc. 2 R1",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "009_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 1 R2",
+    "de": "Laufzeit 1 R2",
+    "fr": "Temps de fonc. 1 R2",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "013_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 2 R2",
+    "de": "Laufzeit 2 R2",
+    "fr": "Temps de fonc. 2 R2",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "017_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 1 R3",
+    "de": "Laufzeit 1 R3",
+    "fr": "Temps de fonc. 1 R3",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "021_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 2 R3",
+    "de": "Laufzeit 2 R3",
+    "fr": "Temps de fonc. 2 R3",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "025_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 1 R4",
+    "de": "Laufzeit 1 R4",
+    "fr": "Temps de fonc. 1 R4",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "029_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 2 R4",
+    "de": "Laufzeit 2 R4",
+    "fr": "Temps de fonc. 2 R4",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "033_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 1 R5",
+    "de": "Laufzeit 1 R5",
+    "fr": "Temps de fonc. 1 R5",
+    "counter": null
+  },
+  {
+    "packet": "6520_0000_0200",
+    "id": "037_3_0",
+    "unit": "Seconds",
+    "en": "Runtime 2 R5",
+    "de": "Laufzeit 2 R5",
+    "fr": "Temps de fonc. 2 R5",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "001_3_0",
+    "unit": "Seconds",
+    "en": "Timer 1.1",
+    "de": "Timer 1.1",
+    "fr": "Programmateur 1.1",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "005_3_0",
+    "unit": "Seconds",
+    "en": "Timer 1.2",
+    "de": "Timer 1.2",
+    "fr": "Programmateur 1.2",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "009_3_0",
+    "unit": "Seconds",
+    "en": "Timer 2.1",
+    "de": "Timer 2.1",
+    "fr": "Programmateur 2.1",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "013_3_0",
+    "unit": "Seconds",
+    "en": "Timer 2.2",
+    "de": "Timer 2.2",
+    "fr": "Programmateur 2.2",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "017_3_0",
+    "unit": "Seconds",
+    "en": "Timer 3.1",
+    "de": "Timer 3.1",
+    "fr": "Programmateur 3.1",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "021_3_0",
+    "unit": "Seconds",
+    "en": "Timer 3.2",
+    "de": "Timer 3.2",
+    "fr": "Programmateur 3.2",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "025_3_0",
+    "unit": "Seconds",
+    "en": "Timer 4.1",
+    "de": "Timer 4.1",
+    "fr": "Programmateur 4.1",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "029_3_0",
+    "unit": "Seconds",
+    "en": "Timer 4.2",
+    "de": "Timer 4.2",
+    "fr": "Programmateur 4.2",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "033_3_0",
+    "unit": "Seconds",
+    "en": "Timer 5.1",
+    "de": "Timer 5.1",
+    "fr": "Programmateur 5.1",
+    "counter": null
+  },
+  {
+    "packet": "6650_0000_0200",
+    "id": "037_3_0",
+    "unit": "Seconds",
+    "en": "Timer 5.2",
+    "de": "Timer 5.2",
+    "fr": "Programmateur 5.2",
+    "counter": null
+  }
+]

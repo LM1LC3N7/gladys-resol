@@ -3,7 +3,8 @@
 ## Before announcing
 
 - [x] Review r1 (2026-10-28): REFUSÉ, 0 blocker, 4 important, 6 minor; fixed
-      (`Fix r1 review`), to be checked by r2.
+      (`Fix r1 review`); r2: REFUSÉ, 0 blocker, 2 important, 3 minor; fixed
+      (`Fix r2 review`), to be checked by r3.
 - [ ] Test on a real Gladys 5.1+ with a real KM2 or DL2 / DL3 and a DeltaSol:
       test button, device creation, the counters over a day (and a midnight).
 - [ ] Turn on "Private vulnerability reporting" (SECURITY.md points there).
@@ -62,7 +63,15 @@
   2 h, volumes 20 m³/h + 100 l); two-click acceptance; an accepted value is a
   floor (a value below it is held again, review r1 m1). A counter split in Wh
   / kWh / MWh fields is dropped next to its total, else put back together
-  (`<id of the first piece>_sum_kwh_total`).
+  (`<id of the first piece>_sum_kwh_total`), the factor of a piece taken
+  from the unit in its name, fields of the same name and different units
+  grouped too, the name of the VSF kept (review r2, I-A).
+- **Class by the VSF table** (review r2, I-B): for a packet the resol-vbus VSF
+  describes, the class of each field comes from `src/vsf-table.js`, decided
+  on its en, de and fr names at once (any name of a period or a setting
+  vetoes; seconds are an operating time when one name says so); the words of
+  the name are only the fallback for an unknown packet. The speed steps of a
+  pump ("Runtime 1 R1") are settings (r2, m2). Ids forever: see CLAUDE.md.
 - **Units**: only the units listed in `src/devices.js` are published;
   temperatures (°C, °F converted) and pressures are typed sensors, the rest
   plain with the unit in the name; no unit, CO₂ savings and unknown units are

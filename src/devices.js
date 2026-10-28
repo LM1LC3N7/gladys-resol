@@ -36,6 +36,7 @@ import {
 } from '@gladysassistant/integration-sdk';
 import { COUNTER_MAX, EXTERNAL_ID_TYPE, MAX_FEATURES } from './constants.js';
 import { cleanText } from './resol/model.js';
+import { VSF_COUNTERS } from './vsf-table.js';
 
 /** The external ids of the VBus packet `packetId` of the device `serial`. */
 export const ids = (gladys, serial, packetId) =>
@@ -223,25 +224,88 @@ const OPERATING = new Set(
 );
 /** A time in seconds that is a setting of a mixer, a valve or a filter, not a counter. */
 const SECONDS_SETTING = new Set('mixer mischer vanne mél filter'.split(' '));
+/**
+ * The duration of a speed step of a pump ("Runtime 1 R1", "Laufzeit 2 R5",
+ * "Temps de fonc. 1 R3", next to "Pump speed 1 R1"): a setting (review r2, m2).
+ */
+const RUNTIME_STEP = /^(runtime|laufzeit|temps de fonc\.?)\s+\d+\s+r\s?\d+$/i;
 /** A volume that is a maximum or a minimum (a record or a setting), not a counter. */
 const VOLUME_SETTING = new Set('max maximum min minimum'.split(' '));
 
 /**
- * The kind of lifetime counter of a field, or undefined: energy (unknown name
- * = lifetime), hours (but the settings in hours), seconds of an operating
- * time (by their words), volumes (but the maximums); never a counter of a
- * period.
+ * By the words of ONE name: `{ counter, veto }`, `counter` the kind of
+ * lifetime counter the name says (energy: any name not of a period; hours:
+ * not a setting; seconds: an operating time; volumes: not a maximum), `veto`
+ * true when the name says it is a counter of a period or a setting.
  */
-export function counterOf(field, unit = unitOf(field)) {
-  if (!unit) return undefined;
-  const words = wordsOf(field.name);
+function byWords(name, unit) {
+  const words = wordsOf(name);
   const has = (set) => words.some((w) => set.has(w));
+  let veto = isPeriodic(name);
   let counter;
   if (unit.energy) counter = 'energy';
-  else if (unit.hours) counter = has(HOUR_SETTING) ? undefined : 'hours';
-  else if (unit.seconds) counter = has(OPERATING) && !has(SECONDS_SETTING) ? 'hours' : undefined;
-  else if (unit.volume) counter = has(VOLUME_SETTING) ? undefined : unit.volume;
-  return counter && !isPeriodic(field.name) ? counter : undefined;
+  else if (unit.hours) {
+    veto ||= has(HOUR_SETTING);
+    counter = 'hours';
+  } else if (unit.seconds) {
+    veto ||= has(SECONDS_SETTING) || RUNTIME_STEP.test(cleanText(name));
+    counter = has(OPERATING) ? 'hours' : undefined;
+  } else if (unit.volume) {
+    veto ||= has(VOLUME_SETTING);
+    counter = unit.volume;
+  }
+  return { counter: veto ? undefined : counter, veto };
+}
+
+/**
+ * The class of a field from its names in several languages (the VSF gives
+ * en, de, fr): a counter in seconds is one when a name says so and none says
+ * it is of a period or a setting ("W O3" is "Betriebssekunden Ausgang PWM 3");
+ * any other is one when every name says so (the monthly "Quantité de
+ * chaleur" of the French VSF is "Heat quantity month"). Used to build the
+ * table of the VSF (scripts/vsf-table.mjs), so that the class, and the key of
+ * the feature, never depend on the language of the data logger.
+ */
+export function counterOfNames(names, unit) {
+  if (!unit || names.length === 0) return undefined;
+  const all = names.map((n) => byWords(n, unit));
+  if (all.some((r) => r.veto)) return undefined;
+  if (unit.seconds) return all.find((r) => r.counter)?.counter;
+  return all.every((r) => r.counter) ? all[0].counter : undefined;
+}
+
+/** The key of a VBus packet in the VSF table: destination, source, command (`0010_7e11_0100`). */
+export function packetKeyOf(packetId) {
+  const parts = String(packetId ?? '')
+    .toLowerCase()
+    .split('_');
+  if (parts.length === 4) return parts.slice(1).join('_');
+  if (parts.length === 5) return [parts[1], parts[2], parts[4]].join('_');
+  return undefined;
+}
+
+/** The table of the VSF: `packet key` -> Map(field id -> counter or not). */
+const TABLE = new Map(
+  Object.entries(VSF_COUNTERS).map(([packet, list]) => [
+    packet,
+    new Map(list.split(',').map((entry) => [entry.slice(0, -2), entry.endsWith(':1')])),
+  ]),
+);
+
+/**
+ * The kind of lifetime counter of a field, or undefined. A field of a packet
+ * the VSF describes takes the class of the VSF table (built from its names in
+ * en, de and fr: the same in every language); any other field is classified
+ * by the words of its name (energy: unknown name = lifetime).
+ */
+export function counterOf(field, unit = unitOf(field), packetId = undefined) {
+  if (!unit || !(unit.energy || unit.hours || unit.seconds || unit.volume)) return undefined;
+  const known = TABLE.get(packetKeyOf(packetId))?.get(field.id);
+  if (known !== undefined) {
+    if (!known) return undefined;
+    return unit.energy ? 'energy' : unit.hours || unit.seconds ? 'hours' : unit.volume;
+  }
+  return byWords(field.name, unit).counter;
 }
 
 /** The kind of counter of a feature, from its key (forever), else undefined. */
@@ -262,13 +326,13 @@ export function counterKindOf(featureId) {
  * 'volume_m3' | undefined, or undefined when it is not published (no unit, a
  * unit not listed).
  */
-export function kindOf(field) {
+export function kindOf(field, packetId) {
   const unit = unitOf(field);
   if (!unit) return undefined;
   const factor = unit.factor ?? 1;
   const offset = unit.offset ?? 0;
   const convert = (value) => (value + offset) * factor;
-  const counter = counterOf(field, unit);
+  const counter = counterOf(field, unit, packetId);
   if (unit.energy || unit.hours) {
     const label = unit.energy ? 'kWh' : 'h';
     return {
@@ -332,47 +396,75 @@ export function featureOf(external, field, kind) {
 
 const cleanName = (name) => [...name].slice(0, 100).join('');
 
-/** A piece of an energy counter split in Wh / kWh / MWh: its base name and its unit. */
+/** A piece of an energy counter split in Wh / kWh / MWh: its base name and the unit in its name. */
 const PIECE = /^(.*?)[\s_-]*(MWh|kWh|Wh)$/;
+/** The factor to kWh of the unit a piece names (the VSF may give it another unit code). */
+const NAMED_FACTOR = { Wh: 1 / 1000, kWh: 1, MWh: 1000 };
 
 /**
- * The fields of a packet, a counter split in pieces (`Heat Wh`, `Heat kWh`,
- * `Heat MWh`: each piece returns to 0 by construction) put back together: a
- * group of two pieces or more of the same base name and different units is
- * dropped when the packet has the total (`Heat`), else replaced by one field
- * `<id of the first piece>_sum` in kWh (unknown when a piece is).
+ * The fields of a packet, a counter split in pieces put back together (each
+ * piece returns to 0 by construction). The energy fields of a packet are
+ * grouped by their base name (the name without a Wh / kWh / MWh at its end):
+ * - pieces named with their unit (`Heat Wh`, `Heat kWh`, `Heat MWh`; HQM-L10:
+ *   `Heat quantity kWh`, `Heat quantity MWh`, the second one with the unit
+ *   code kWh in the VSF): the factor is the one of the unit in the name. Next
+ *   to a field of the same base name without unit (the total, `Heat`), they
+ *   are dropped; else replaced by one field;
+ * - fields of the same name and different units (Oranier HK: three `Heat` in
+ *   Wh, kWh and MWh; `Current1` in Wh and kWh): put back together.
+ * The field put back together is `<id of the first piece>_sum` in kWh
+ * (unknown when a piece is), named after the base name of the VSF, or the
+ * names of its pieces joined by " + " when the base is empty (`kWh + MWh`).
+ * Review r2, I-A.
  */
 export function joinedFields(packet) {
-  const energy = packet.fields.filter((f) => unitOf(f)?.energy);
   const groups = new Map();
-  for (const field of energy) {
+  for (const field of packet.fields) {
+    const unit = unitOf(field);
+    if (!unit?.energy) continue;
     const match = PIECE.exec(field.name);
-    if (!match) continue;
-    const base = cleanText(match[1]);
+    const base = cleanText(match ? match[1] : field.name);
     const key = base.toLowerCase();
     if (!groups.has(key)) groups.set(key, []);
-    groups.get(key).push({ field, base, unit: match[2] });
+    groups.get(key).push({
+      field,
+      base,
+      named: Boolean(match),
+      factor: match ? NAMED_FACTOR[match[2]] : (unit.factor ?? 1),
+    });
   }
   const replace = new Map();
-  for (const [key, list] of groups) {
-    if (list.length < 2 || new Set(list.map((p) => p.unit)).size !== list.length) continue;
-    const pieces = new Set(list.map((p) => p.field));
-    const total = energy.some((f) => !pieces.has(f) && cleanText(f.name).toLowerCase() === key);
-    let sum = 0;
-    for (const { field } of list) {
-      if (typeof field.value !== 'number' || !Number.isFinite(field.value)) sum = undefined;
-      if (sum !== undefined) sum += field.value * (unitOf(field).factor ?? 1);
+  const distinct = (list) =>
+    list.length >= 2 && new Set(list.map((p) => p.factor)).size === list.length;
+  for (const list of groups.values()) {
+    const named = list.filter((p) => p.named);
+    const plain = list.filter((p) => !p.named);
+    let pieces;
+    if (distinct(named)) {
+      if (plain.length > 0) {
+        // The total is given: the pieces are dropped.
+        for (const { field } of named) replace.set(field, undefined);
+        continue;
+      }
+      pieces = named;
+    } else if (named.length === 0 && distinct(plain)) {
+      pieces = plain;
+    } else {
+      continue;
     }
-    const joined = total
-      ? undefined
-      : {
-          id: `${list[0].field.id}_sum`,
-          name: list[0].base || 'Energy',
-          unitCode: 'KilowattHours',
-          unitText: 'kWh',
-          value: sum,
-        };
-    for (const [i, { field }] of list.entries()) replace.set(field, i === 0 ? joined : undefined);
+    let sum = 0;
+    for (const { field, factor } of pieces) {
+      if (typeof field.value !== 'number' || !Number.isFinite(field.value)) sum = undefined;
+      if (sum !== undefined) sum += field.value * factor;
+    }
+    const joined = {
+      id: `${pieces[0].field.id}_sum`,
+      name: pieces[0].base || pieces.map((p) => p.field.name).join(' + '),
+      unitCode: 'KilowattHours',
+      unitText: 'kWh',
+      value: sum,
+    };
+    for (const [i, { field }] of pieces.entries()) replace.set(field, i === 0 ? joined : undefined);
   }
   return packet.fields.flatMap((f) => (replace.has(f) ? [replace.get(f)].filter(Boolean) : [f]));
 }
@@ -382,7 +474,7 @@ export function publishedFields(packet) {
   const out = [];
   const keys = new Set();
   for (const field of joinedFields(packet)) {
-    const kind = kindOf(field);
+    const kind = kindOf(field, packet.id);
     if (!kind || keys.has(kind.key)) continue;
     keys.add(kind.key);
     out.push({ field, kind });

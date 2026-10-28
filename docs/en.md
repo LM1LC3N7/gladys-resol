@@ -109,8 +109,11 @@ counter goes through a guard:
   Accepted, the value is the new floor: a value below it is held again.
   Saving the configuration accepts nothing.
 
-The names are read word by word (also `Wmz1_ValueToday_Wh`). A counter of a
-period whose name is not recognized (the words for "today",
+For the controllers the resol-vbus VSF describes, the kind of each counter
+(lifetime, of a period, a setting) comes from a table built from its English,
+German and French names: it does not depend on the language of the data
+logger. For the others, the names are read word by word (also
+`Wmz1_ValueToday_Wh`); a counter of a period whose name is not recognized (the words for "today",
 "yesterday", "week", "month", "year" and the previous ones in English,
 French, German, Italian, Dutch and Spanish) is taken as a lifetime counter: its return to 0 is then held, never
 published as a drop.

@@ -15,7 +15,12 @@ the notes of the version's GitHub Release.
 - RESOL KM2, DL2, DL2Plus and DL3 read locally (device information, then the
   live data), one Gladys device per VBus packet, read-only.
 - Temperatures, pressures and the other values with a unit; lifetime heat
-  quantities and operating hours through a guard (never 0, never a drop nor
-  a jump without the two-click "Accept the held counter" action).
+  quantities, operating hours (also from operating seconds) and total
+  volumes through a guard (never 0, never a drop nor a jump without the
+  two-click "Accept the held counter" action; an accepted value is a floor).
+- The class of each counter of the VSF taken from a table built from its
+  English, German and French names (the same whatever the language of the
+  data logger); counters of a period and settings stay plain; counters split
+  in Wh / kWh / MWh put back together.
 - Refused credentials kept as a final stop; test button; stale VBus packets
   no longer published.

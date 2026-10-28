@@ -118,8 +118,11 @@ monter. Chaque compteur passe par une garde :
   valeur plus basse est de nouveau retenue. Enregistrer la configuration
   n'accepte rien.
 
-Les noms sont lus mot à mot (aussi `Wmz1_ValueToday_Wh`). Un compteur de
-période dont le nom n'est pas reconnu (les mots « aujourd'hui », « hier »,
+Pour les régulateurs que décrit le VSF de resol-vbus, la nature de chaque
+compteur (à vie, de période, réglage) vient d'une table tirée de ses noms en
+anglais, allemand et français : elle ne dépend pas de la langue de
+l'enregistreur. Pour les autres, les noms sont lus mot à mot (aussi
+`Wmz1_ValueToday_Wh`) ; un compteur de période dont le nom n'est pas reconnu (les mots « aujourd'hui », « hier »,
 « semaine », « mois », « année » et les précédents en français, anglais, allemand, italien,
 néerlandais et espagnol) est traité comme un compteur à vie : sa remise à 0
 est alors retenue, jamais publiée comme une baisse.
