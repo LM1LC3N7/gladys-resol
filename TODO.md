@@ -4,7 +4,8 @@
 
 - [x] Review r1 (2026-10-28): REFUSÉ, 0 blocker, 4 important, 6 minor; fixed
       (`Fix r1 review`); r2: REFUSÉ, 0 blocker, 2 important, 3 minor; fixed
-      (`Fix r2 review`), to be checked by r3.
+      (`Fix r2 review`); r3: REFUSÉ, 0 blocker, 1 important, 3 minor; fixed
+      (`Fix r3 review`), to be checked by r4.
 - [ ] Test on a real Gladys 5.1+ with a real KM2 or DL2 / DL3 and a DeltaSol:
       test button, device creation, the counters over a day (and a midnight).
 - [ ] Turn on "Private vulnerability reporting" (SECURITY.md points there).
@@ -29,6 +30,21 @@
       lifetime counter: held at its reset, never published as a drop).
 - [ ] The JSON-RPC error codes of a KM2 to a wrong password (the standard
       protocol errors -32700 and -32600 to -32603 are taken as no refusal).
+- [ ] The headers of a KM2 answer (review r3, m2): the numbers
+      `destination_address`, `source_address` and `command` of the DLx
+      format (they find the template of the VSF table; without them, the id
+      `00_DDDD_SSSS_CCCC` is read), and the naming of its packets. Assumed:
+      a KM2 names its packets with the same ids and the same VSF as a DL2
+      (the only source is the KM2 emulation of the json-live-data-server of
+      resol-vbus, `generateKM2DataGetCurrentDataResponse`: the DLx JSON
+      without `language`). If it does not, the words of the names are the
+      fallback: the French monthly "Quantité de chaleur" of a DeltaSol MX
+      heat quantity module would be held as a lifetime counter at its reset,
+      and "W O3" / "W O4" would stay plain sensors.
+- [ ] That a counter split in pieces never reads 1000 or more in a piece
+      other than the highest (0x105b `kWh` / `MWh` and 0x7774 `Current1` in
+      Wh / kWh are 4 bytes each: they may be the same counter in two units;
+      published apart when a lower piece reads 1000 or more, review r3, m1).
 
 ## Decisions
 
@@ -65,13 +81,21 @@
   / kWh / MWh fields is dropped next to its total, else put back together
   (`<id of the first piece>_sum_kwh_total`), the factor of a piece taken
   from the unit in its name, fields of the same name and different units
-  grouped too, the name of the VSF kept (review r2, I-A).
+  grouped too, the name of the VSF kept (review r2, I-A). A piece other than
+  the highest that reads 1000 or more in its unit makes the group the same
+  counter in two units: its fields are published apart, a named one in the
+  unit of its name (review r3, m1).
 - **Class by the VSF table** (review r2, I-B): for a packet the resol-vbus VSF
   describes, the class of each field comes from `src/vsf-table.js`, decided
   on its en, de and fr names at once (any name of a period or a setting
   vetoes; seconds are an operating time when one name says so); the words of
-  the name are only the fallback for an unknown packet. The speed steps of a
-  pump ("Runtime 1 R1") are settings (r2, m2). Ids forever: see CLAUDE.md.
+  the name are only the fallback for a packet no template covers. The table
+  keeps the packet templates in the order of the VSF with their address
+  masks and is searched as resol-vbus does (review r3, I-C: 0x7E31, DeltaSol
+  MX [HQM #1], is the template 0x7E30 / 0xFFF0); the address of a packet is
+  read from the numbers of its header, its id as the fallback (r3, m2). The
+  speed steps of a pump ("Runtime 1 R1") are settings (r2, m2). Ids forever:
+  see CLAUDE.md.
 - **Units**: only the units listed in `src/devices.js` are published;
   temperatures (°C, °F converted) and pressures are typed sensors, the rest
   plain with the unit in the name; no unit, CO₂ savings and unknown units are

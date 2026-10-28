@@ -77,15 +77,47 @@ const HEADER_ID = /^[0-9a-z_]{1,48}$/i;
 /** A field id (e.g. 000_2_0), lower-cased. */
 const FIELD_ID = /^[0-9a-z_]{1,32}$/i;
 
+/** A VBus address or command: an integer of 16 bits. */
+const isWord = (v) => Number.isInteger(v) && v >= 0 && v <= 0xffff;
+
+/**
+ * The VBus address of a packet id of the DLx format, `{ destination, source,
+ * command }`: `00_0010_7E31_0100` (channel, destination, source, command),
+ * also with the protocol version `_10` that resol-vbus drops; undefined
+ * otherwise.
+ */
+export function addressOfId(id) {
+  const match = /^[0-9a-f]{2}_([0-9a-f]{4})_([0-9a-f]{4})(?:_10)?_([0-9a-f]{4})$/i.exec(
+    String(id ?? ''),
+  );
+  if (!match) return undefined;
+  const [destination, source, command] = match.slice(1).map((h) => Number.parseInt(h, 16));
+  return { destination, source, command };
+}
+
+/**
+ * The VBus address of a header: its numbers `destination_address`,
+ * `source_address` and `command` (the DLx format gives them; review r3, m2),
+ * else its id (a KM2 whose headers would lack them: to confirm, TODO.md).
+ */
+function addressOfHeader(header, id) {
+  const { destination_address: destination, source_address: source, command } = header;
+  if (isWord(destination) && isWord(source) && isWord(command)) {
+    return { destination, source, command };
+  }
+  return addressOfId(id);
+}
+
 /** An index of a list: an integer from 0, else the fallback (the position). */
 const indexOf = (raw, fallback) => (Number.isInteger(raw) && raw >= 0 ? raw : fallback);
 
 /**
  * The live data -> `{ at, packets }`, or undefined when it is not the DLx
  * format. `at`: the time stamp of the answer (ms, clock of the device), when
- * given. `packets`: `[{ id, source, destination, description, at, fields }]`,
- * `fields`: `[{ id, name, unitCode, unitText, value }]`, `value` a finite
- * number or undefined (unknown).
+ * given. `packets`: `[{ id, address, source, destination, description, at,
+ * fields }]`, `address` the VBus address `{ destination, source, command }`
+ * (numbers) or undefined, `fields`: `[{ id, name, unitCode, unitText, value
+ * }]`, `value` a finite number or undefined (unknown).
  */
 export function parseLive(data) {
   if (!isObject(data) || !Array.isArray(data.headers) || !Array.isArray(data.headersets)) {
@@ -133,6 +165,7 @@ export function parseLive(data) {
     }
     const packet = {
       id,
+      address: addressOfHeader(header, id),
       source: cleanText(header.source_name, 60),
       destination: cleanText(header.destination_name, 60),
       description: cleanText(header.description, 80),

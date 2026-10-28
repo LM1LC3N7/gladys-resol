@@ -52,11 +52,19 @@ export const DELTASOL = {
   ],
 };
 
+/** The numbers of a header, from its id (`00_0010_7E11_0100`), as resol-vbus writes them. */
+const numbersOf = (id) => {
+  const [channel, destination, source, command] = id.split('_').map((h) => Number.parseInt(h, 16));
+  return { channel, destination, source, command };
+};
+
 /**
  * A live data answer. `packets`: `[{ id, source, destination, fields:
- * [{ id, name, unit (code), value, text }], at }]`; `at`: the time stamp of
- * the answer (s). A field `value: null` is written as resol-vbus does: raw 0,
- * empty text.
+ * [{ id, name, unit (code), value, text }], at, numbers }]`; `at`: the time
+ * stamp of the answer (s); `numbers`: the addresses and command of the
+ * header, `{ destination, source, command }` (default: those of the id),
+ * `null` for a header without them. A field `value: null` is written as
+ * resol-vbus does: raw 0, empty text.
  */
 export function liveData({ packets = [DELTASOL], at = 1_800_000_000 } = {}) {
   return {
@@ -64,11 +72,15 @@ export function liveData({ packets = [DELTASOL], at = 1_800_000_000 } = {}) {
     headers: packets.map((p) => ({
       id: p.id,
       description: `VBus 0: ${p.source}`,
-      channel: 0,
-      destination_address: 16,
-      source_address: 32273,
+      channel: numbersOf(p.id).channel,
+      ...(p.numbers === null
+        ? {}
+        : {
+            destination_address: (p.numbers ?? numbersOf(p.id)).destination,
+            source_address: (p.numbers ?? numbersOf(p.id)).source,
+            command: (p.numbers ?? numbersOf(p.id)).command,
+          }),
       protocol_version: 16,
-      command: 256,
       info: 0,
       destination_name: p.destination ?? 'DFA',
       source_name: p.source,

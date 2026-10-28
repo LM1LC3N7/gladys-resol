@@ -42,7 +42,9 @@ sa langue (gardez le VSF à jour) :
   les volumes maximaux sont aussi de simples capteurs ;
 - une quantité de chaleur découpée par le régulateur en champs Wh, kWh et MWh
   est publiée une fois, recomposée en kWh (ou pas du tout quand le régulateur
-  donne aussi le total).
+  donne aussi le total) ; si un champ autre que celui de la plus grande unité
+  vaut 1000 ou plus dans son unité, ce n'est pas un morceau mais le même
+  compteur dans une autre unité : chaque champ est alors publié à part.
 
 Les valeurs sans unité (masques d'erreur, versions, dates, heures du jour)
 ne sont pas publiées. Les quantités de chaleur sont de la **chaleur**, pas de
@@ -118,14 +120,18 @@ monter. Chaque compteur passe par une garde :
   valeur plus basse est de nouveau retenue. Enregistrer la configuration
   n'accepte rien.
 
-Pour les régulateurs que décrit le VSF de resol-vbus, la nature de chaque
-compteur (à vie, de période, réglage) vient d'une table tirée de ses noms en
-anglais, allemand et français : elle ne dépend pas de la langue de
-l'enregistreur. Pour les autres, les noms sont lus mot à mot (aussi
-`Wmz1_ValueToday_Wh`) ; un compteur de période dont le nom n'est pas reconnu (les mots « aujourd'hui », « hier »,
-« semaine », « mois », « année » et les précédents en français, anglais, allemand, italien,
-néerlandais et espagnol) est traité comme un compteur à vie : sa remise à 0
-est alors retenue, jamais publiée comme une baisse.
+Pour les régulateurs et modules que décrit le VSF de resol-vbus, la nature de
+chaque compteur (à vie, de période, réglage) vient d'une table tirée de ses
+noms en anglais, allemand et français : elle ne dépend pas de la langue de
+l'enregistreur. La table est cherchée comme le fait resol-vbus, masques
+d'adresse compris : un modèle de paquet du VSF couvre souvent plusieurs
+adresses (les modules de calorimétrie HQM #0 à #15 d'un DeltaSol MX, 0x7E30 à
+0x7E3F, partagent le même). Pour un paquet qu'aucun modèle du VSF ne couvre,
+les noms sont lus mot à mot (aussi `Wmz1_ValueToday_Wh`) ; un compteur de
+période dont le nom n'est pas reconnu (les mots « aujourd'hui », « hier »,
+« semaine », « mois », « année » et les précédents en français, anglais,
+allemand, italien, néerlandais et espagnol) est traité comme un compteur à
+vie : sa remise à 0 est alors retenue, jamais publiée comme une baisse.
 
 ## Confidentialité et sécurité
 

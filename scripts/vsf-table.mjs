@@ -1,36 +1,61 @@
 // Builds src/vsf-table.js and test/fixtures/vsf-fields.json from a dump of the
-// VBus specification file (VSF) of resol-vbus (MIT): every field of a counter
-// unit (energy, hours, seconds, volumes) with its packet (destination, source,
-// command), its id and its names in en, de and fr. The class of each field is
-// decided on its three names at once (src/devices.js counterOfNames), so that
-// it, and the key of the feature, never depend on the language of the data
-// logger (review r2, I-B).
+// VBus specification file (VSF) of resol-vbus (MIT): every packet template
+// with a field of a counter unit (energy, hours, seconds, volumes), its
+// addresses AND their masks (one template covers several addresses: DeltaSol
+// MX [HQM #0] to [HQM #15] are 0x7E30 to 0x7E3F, source mask 0xFFF0; review
+// r3, I-C), its command, and the id and the en, de, fr names of its fields.
+// The class of each field is decided on its three names at once
+// (src/devices.js counterOfNames), so that it, and the key of the feature,
+// never depend on the language of the data logger (review r2, I-B).
 //
-// The dump is a JSON list `[{ src, dst, cmd, id, unit, en, de, fr }]` (hex
-// without padding), as written from resol-vbus's SpecificationFile (the
-// `dump.cjs` of the review, _lots/lot18/reviews/resol/vsf/). No code of
-// resol-vbus runs here.
+// The dump is a JSON list `[{ dst, dmask, src, smask, cmd, id, unit, en, de,
+// fr }]` (hex without padding), one entry per field, in the order of
+// `SpecificationFile.packetTemplates` of resol-vbus (the order of its lookup,
+// kept in the table: the first template that matches wins), written by:
+//   for (const pt of new SpecificationFile(vsfBuffer, 'en').packetTemplates)
+//     for (const f of pt.fields) out.push({ dst: pt.destinationAddress.toString(16),
+//       dmask: pt.destinationMask.toString(16), src: pt.sourceAddress.toString(16),
+//       smask: pt.sourceMask.toString(16), cmd: pt.command.toString(16), id: f.id,
+//       unit: f.unit?.unitCode ?? 'None', en: f.name?.en, de: f.name?.de, fr: f.name?.fr });
+// No code of resol-vbus runs here.
 // Usage: node scripts/vsf-table.mjs fields.json
 import { readFileSync, writeFileSync } from 'node:fs';
 import { UNITS, counterOfNames } from '../src/devices.js';
 
 const fields = JSON.parse(readFileSync(process.argv[2], 'utf8'));
 const hex = (v) => String(v).toLowerCase().padStart(4, '0');
-const table = new Map();
-const fixture = [];
+const hex4 = (n) => n.toString(16).padStart(4, '0');
+const word = (v) => {
+  const n = Number.parseInt(String(v), 16);
+  if (!/^[0-9a-f]{1,4}$/i.test(String(v)) || !(n >= 0 && n <= 0xffff)) {
+    throw new Error(`dump without the addresses and masks of each template (${v}): see the header`);
+  }
+  return n;
+};
+// The templates in the order of the VSF.
+const templates = new Map();
 for (const f of fields) {
+  const t = {
+    dst: word(f.dst),
+    dmask: word(f.dmask),
+    src: word(f.src),
+    smask: word(f.smask),
+    cmd: word(f.cmd),
+  };
+  const key = [t.dst, t.dmask, t.src, t.smask, t.cmd].map(hex4).join('_');
+  if (!templates.has(key)) templates.set(key, { ...t, counters: new Map(), fixture: [] });
+  const template = templates.get(key);
   const unit = UNITS[f.unit];
   if (!unit || !(unit.energy || unit.hours || unit.seconds || unit.volume)) continue;
-  const packet = `${hex(f.dst)}_${hex(f.src)}_${hex(f.cmd)}`;
   const id = String(f.id).toLowerCase();
-  if (!/^[0-9a-z_]{1,32}$/.test(id)) continue;
+  if (!/^[0-9a-z_]{1,32}$/.test(id) || template.counters.has(id)) continue;
   const names = [f.en, f.de, f.fr].filter((n) => typeof n === 'string' && n !== '');
   const counter = counterOfNames(names, unit);
-  if (!table.has(packet)) table.set(packet, new Map());
-  if (table.get(packet).has(id)) continue;
-  table.get(packet).set(id, counter ? 1 : 0);
-  fixture.push({
-    packet,
+  template.counters.set(id, counter ? 1 : 0);
+  template.fixture.push({
+    packet: `${hex(f.dst)}_${hex(f.src)}_${hex(f.cmd)}`,
+    dmask: hex(f.dmask),
+    smask: hex(f.smask),
     id,
     unit: f.unit,
     en: f.en,
@@ -39,24 +64,48 @@ for (const f of fields) {
     counter: counter ?? null,
   });
 }
-const lines = [...table]
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([packet, map]) => `  '${packet}': '${[...map].map(([id, c]) => `${id}:${c}`).join(',')}',`);
+const all = [...templates.values()];
+// Two templates overlap when an address matches both (same command, masked
+// addresses equal under both masks).
+const overlap = (a, b) => {
+  const dm = a.dmask & b.dmask;
+  const sm = a.smask & b.smask;
+  return a.cmd === b.cmd && (a.dst & dm) === (b.dst & dm) && (a.src & sm) === (b.src & sm);
+};
+// Kept: the templates with a counter field, and an earlier template that
+// overlaps one of them (without counter field: an empty list), so that the
+// first match in the table is the first match of resol-vbus.
+const kept = all.filter(
+  (t, i) =>
+    t.counters.size > 0 || all.slice(i + 1).some((u) => u.counters.size > 0 && overlap(t, u)),
+);
+const h = (n) => `0x${hex4(n)}`;
+const lines = kept.map(
+  (t) =>
+    `  [${[t.dst, t.dmask, t.src, t.smask, t.cmd].map(h).join(', ')}, '${[...t.counters]
+      .map(([id, c]) => `${id}:${c}`)
+      .join(',')}'],`,
+);
 writeFileSync(
   new URL('../src/vsf-table.js', import.meta.url),
   `// Generated by scripts/vsf-table.mjs from the VBus specification file of
-// resol-vbus (MIT, see THIRD_PARTY_NOTICES.md): by packet (destination,
-// source, command), the fields of a counter unit and whether each one is a
-// lifetime counter (1) or not (0, a counter of a period or a setting).
+// resol-vbus (MIT, see THIRD_PARTY_NOTICES.md): the packet templates, in the
+// order of the VSF (the first that matches wins, as in resol-vbus):
+// [destination, destination mask, source, source mask, command, fields], the
+// fields of a counter unit and whether each one is a lifetime counter (1) or
+// not (0, a counter of a period or a setting). A packet matches a template
+// when (address & mask) === (address of the template & mask) for both
+// addresses, and the command is the same.
 // Do not edit by hand: a change of class changes the key of a feature.
 /* prettier-ignore */
-export const VSF_COUNTERS = {
+export const VSF_COUNTERS = [
 ${lines.join('\n')}
-};
+];
 `,
 );
+const fixture = kept.flatMap((t) => t.fixture);
 writeFileSync(
   new URL('../test/fixtures/vsf-fields.json', import.meta.url),
   `${JSON.stringify(fixture)}\n`,
 );
-console.log(`${table.size} packets, ${fixture.length} fields`);
+console.log(`${kept.length} packet templates, ${fixture.length} fields`);

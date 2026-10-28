@@ -8,14 +8,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import {
-  UNITS,
-  counterOf,
-  joinedFields,
-  kindOf,
-  packetKeyOf,
-  publishedFields,
-} from '../src/devices.js';
+import { UNITS, counterOf, joinedFields, kindOf, publishedFields } from '../src/devices.js';
 
 const FIELDS = JSON.parse(
   readFileSync(new URL('./fixtures/vsf-fields.json', import.meta.url), 'utf8'),
@@ -46,9 +39,6 @@ test('the cases of the review: the monthly "Quantité de chaleur", "W O3", the s
   for (const name of ['Runtime 1 R1', 'Laufzeit 2 R5', 'Temps de fonc. 1 R3']) {
     assert.equal(counterOf({ name, unitCode: 'Seconds' }), undefined, name);
   }
-  assert.equal(packetKeyOf('00_0010_7E11_0100'), '0010_7e11_0100');
-  assert.equal(packetKeyOf('00_0010_7E11_10_0100'), '0010_7e11_0100');
-  assert.equal(packetKeyOf('x'), undefined);
 });
 
 const packet = (id, fields) => ({

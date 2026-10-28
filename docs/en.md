@@ -40,7 +40,9 @@ One device per controller or module on the VBus (named after it, e.g.
   time, a mixer runtime...) and maximum volumes are plain sensors too;
 - a heat quantity split by the controller in Wh, kWh and MWh fields is
   published once, put back together in kWh (or not at all when the
-  controller also gives the total).
+  controller also gives the total); when a field other than the one of the
+  largest unit reads 1000 or more in its unit, it is no piece but the same
+  counter in another unit: each field is then published apart.
 
 Values without a unit (error masks, versions, dates, times of day) are not
 published. Heat quantities are **heat**, not electricity: they never go to
@@ -109,14 +111,17 @@ counter goes through a guard:
   Accepted, the value is the new floor: a value below it is held again.
   Saving the configuration accepts nothing.
 
-For the controllers the resol-vbus VSF describes, the kind of each counter
-(lifetime, of a period, a setting) comes from a table built from its English,
-German and French names: it does not depend on the language of the data
-logger. For the others, the names are read word by word (also
-`Wmz1_ValueToday_Wh`); a counter of a period whose name is not recognized (the words for "today",
-"yesterday", "week", "month", "year" and the previous ones in English,
-French, German, Italian, Dutch and Spanish) is taken as a lifetime counter: its return to 0 is then held, never
-published as a drop.
+For the controllers and modules the resol-vbus VSF describes, the kind of each
+counter (lifetime, of a period, a setting) comes from a table built from its
+English, German and French names: it does not depend on the language of the
+data logger. The table is searched as resol-vbus does, address masks included:
+a packet template of the VSF often covers several addresses (the heat quantity
+modules HQM #0 to #15 of a DeltaSol MX, 0x7E30 to 0x7E3F, share one). For a
+packet no template of the VSF covers, the names are read word by word (also
+`Wmz1_ValueToday_Wh`); a counter of a period whose name is not recognized (the
+words for "today", "yesterday", "week", "month", "year" and the previous ones
+in English, French, German, Italian, Dutch and Spanish) is taken as a lifetime
+counter: its return to 0 is then held, never published as a drop.
 
 ## Privacy and security
 

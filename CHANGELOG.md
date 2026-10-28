@@ -20,7 +20,10 @@ the notes of the version's GitHub Release.
   two-click "Accept the held counter" action; an accepted value is a floor).
 - The class of each counter of the VSF taken from a table built from its
   English, German and French names (the same whatever the language of the
-  data logger); counters of a period and settings stay plain; counters split
-  in Wh / kWh / MWh put back together.
+  data logger), searched with the address masks of the VSF as resol-vbus
+  does (the 2nd heat quantity module and the next ones too); counters of a
+  period and settings stay plain; counters split in Wh / kWh / MWh put back
+  together (published apart when a lower piece reads 1000 or more: the same
+  counter in two units).
 - Refused credentials kept as a final stop; test button; stale VBus packets
   no longer published.

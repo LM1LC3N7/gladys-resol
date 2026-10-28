@@ -21,9 +21,11 @@
 // - every lifetime counter (energy, operating hours) goes through the guard
 //   (src/guard.js, src/app.js): never 0, never a drop nor a jump without the
 //   user; the counters of a period (today, week, month, year: they return to
-//   0 by design) are plain sensors, recognized by their name in the languages
-//   of the VSF (PERIODIC below), a name not recognized being taken as a
-//   lifetime counter (held at its reset, never published as a drop);
+//   0 by design) are plain sensors, recognized by the VSF table for a packet
+//   the VSF describes (templateOf below, address masks included), else by
+//   their name in the languages of the VSF (PERIODIC below), a name not
+//   recognized being taken as a lifetime counter (held at its reset, never
+//   published as a drop);
 // - units: only the ones the core lists for the category
 //   (DEVICE_FEATURE_UNITS_BY_CATEGORY): °C for temperature-sensor, bar, hPa
 //   and psi for pressure-sensor, none for unknown (the unit is in the name).
@@ -35,7 +37,7 @@ import {
   DEVICE_FEATURE_UNITS as U,
 } from '@gladysassistant/integration-sdk';
 import { COUNTER_MAX, EXTERNAL_ID_TYPE, MAX_FEATURES } from './constants.js';
-import { cleanText } from './resol/model.js';
+import { addressOfId, cleanText } from './resol/model.js';
 import { VSF_COUNTERS } from './vsf-table.js';
 
 /** The external ids of the VBus packet `packetId` of the device `serial`. */
@@ -274,33 +276,64 @@ export function counterOfNames(names, unit) {
   return all.every((r) => r.counter) ? all[0].counter : undefined;
 }
 
-/** The key of a VBus packet in the VSF table: destination, source, command (`0010_7e11_0100`). */
-export function packetKeyOf(packetId) {
-  const parts = String(packetId ?? '')
-    .toLowerCase()
-    .split('_');
-  if (parts.length === 4) return parts.slice(1).join('_');
-  if (parts.length === 5) return [parts[1], parts[2], parts[4]].join('_');
-  return undefined;
+/**
+ * The VBus address of a packet: `{ destination, source, command }`, numbers
+ * of 16 bits. A packet of the live data carries it (src/resol/model.js: the
+ * numbers of its header, else its id); a packet id alone
+ * (`00_0010_7E31_0100`, `00_0010_7E31_10_0100`) gives it too.
+ */
+export function addressOfPacket(packet) {
+  if (typeof packet === 'string') return addressOfId(packet);
+  return packet?.address ?? addressOfId(packet?.id);
 }
 
-/** The table of the VSF: `packet key` -> Map(field id -> counter or not). */
-const TABLE = new Map(
-  Object.entries(VSF_COUNTERS).map(([packet, list]) => [
-    packet,
-    new Map(list.split(',').map((entry) => [entry.slice(0, -2), entry.endsWith(':1')])),
-  ]),
-);
+/**
+ * The templates of the VSF table, in its order: `{ dst, dmask, src, smask,
+ * cmd, fields }`, `fields` a Map(field id -> lifetime counter or not).
+ */
+const TABLE = VSF_COUNTERS.map(([dst, dmask, src, smask, cmd, list]) => ({
+  dst,
+  dmask,
+  src,
+  smask,
+  cmd,
+  fields: new Map(
+    list
+      .split(',')
+      .filter(Boolean)
+      .map((entry) => [entry.slice(0, -2), entry.endsWith(':1')]),
+  ),
+}));
 
 /**
- * The kind of lifetime counter of a field, or undefined. A field of a packet
- * the VSF describes takes the class of the VSF table (built from its names in
- * en, de and fr: the same in every language); any other field is classified
- * by the words of its name (energy: unknown name = lifetime).
+ * The template of the VSF table of a packet address, as resol-vbus finds it
+ * (SpecificationFile.getPacketTemplate): the first whose destination and
+ * source match under their masks (one template covers several addresses:
+ * DeltaSol MX [HQM #0] to [HQM #15] are 0x7E30 to 0x7E3F, source mask
+ * 0xFFF0; review r3, I-C), with the same command. Undefined when none.
  */
-export function counterOf(field, unit = unitOf(field), packetId = undefined) {
+export function templateOf(address) {
+  if (!address) return undefined;
+  const { destination, source, command } = address;
+  return TABLE.find(
+    (t) =>
+      (destination & t.dmask) === (t.dst & t.dmask) &&
+      (source & t.smask) === (t.src & t.smask) &&
+      command === t.cmd,
+  );
+}
+
+/**
+ * The kind of lifetime counter of a field, or undefined. `packet`: the packet
+ * of the field (its address) or its id. A field of a packet the VSF
+ * describes (its address covered by a template of the table) takes the class
+ * of the VSF table (built from its names in en, de and fr: the same in every
+ * language); any other field is classified by the words of its name (energy:
+ * unknown name = lifetime).
+ */
+export function counterOf(field, unit = unitOf(field), packet = undefined) {
   if (!unit || !(unit.energy || unit.hours || unit.seconds || unit.volume)) return undefined;
-  const known = TABLE.get(packetKeyOf(packetId))?.get(field.id);
+  const known = templateOf(addressOfPacket(packet))?.fields.get(field.id);
   if (known !== undefined) {
     if (!known) return undefined;
     return unit.energy ? 'energy' : unit.hours || unit.seconds ? 'hours' : unit.volume;
@@ -324,15 +357,15 @@ export function counterKindOf(featureId) {
  * What a field of the live data becomes: `{ key, counter, spec, label, min,
  * max, digits, convert }`, `counter` 'energy' | 'hours' | 'volume_l' |
  * 'volume_m3' | undefined, or undefined when it is not published (no unit, a
- * unit not listed).
+ * unit not listed). `packet`: the packet of the field, or its id.
  */
-export function kindOf(field, packetId) {
+export function kindOf(field, packet) {
   const unit = unitOf(field);
   if (!unit) return undefined;
   const factor = unit.factor ?? 1;
   const offset = unit.offset ?? 0;
   const convert = (value) => (value + offset) * factor;
-  const counter = counterOf(field, unit, packetId);
+  const counter = counterOf(field, unit, packet);
   if (unit.energy || unit.hours) {
     const label = unit.energy ? 'kWh' : 'h';
     return {
@@ -400,6 +433,10 @@ const cleanName = (name) => [...name].slice(0, 100).join('');
 const PIECE = /^(.*?)[\s_-]*(MWh|kWh|Wh)$/;
 /** The factor to kWh of the unit a piece names (the VSF may give it another unit code). */
 const NAMED_FACTOR = { Wh: 1 / 1000, kWh: 1, MWh: 1000 };
+/** The unit code of the unit a piece names. */
+const NAMED_UNIT = { Wh: 'WattHours', kWh: 'KilowattHours', MWh: 'MegawattHours' };
+/** A piece of a split counter is below this, in its unit. */
+const PIECE_LIMIT = 1000;
 
 /**
  * The fields of a packet, a counter split in pieces put back together (each
@@ -415,7 +452,11 @@ const NAMED_FACTOR = { Wh: 1 / 1000, kWh: 1, MWh: 1000 };
  * The field put back together is `<id of the first piece>_sum` in kWh
  * (unknown when a piece is), named after the base name of the VSF, or the
  * names of its pieces joined by " + " when the base is empty (`kWh + MWh`).
- * Review r2, I-A.
+ * Review r2, I-A. A piece stays below 1000 in its unit (999 kWh, then 1
+ * MWh): when a piece other than the highest one reads 1000 or more, the
+ * fields are the same counter in two units (0x105b `kWh` and `MWh`, 0x7774
+ * `Current1` in Wh and kWh: 4 bytes each), not pieces, and are published
+ * apart, a named one in the unit of its name (review r3, m1).
  */
 export function joinedFields(packet) {
   const groups = new Map();
@@ -429,7 +470,7 @@ export function joinedFields(packet) {
     groups.get(key).push({
       field,
       base,
-      named: Boolean(match),
+      named: match?.[2],
       factor: match ? NAMED_FACTOR[match[2]] : (unit.factor ?? 1),
     });
   }
@@ -450,6 +491,16 @@ export function joinedFields(packet) {
     } else if (named.length === 0 && distinct(plain)) {
       pieces = plain;
     } else {
+      continue;
+    }
+    const top = Math.max(...pieces.map((p) => p.factor));
+    if (pieces.some((p) => p.factor < top && p.field.value >= PIECE_LIMIT)) {
+      // The same counter in two units: published apart.
+      for (const p of pieces) {
+        if (p.named) {
+          replace.set(p.field, { ...p.field, unitCode: NAMED_UNIT[p.named], unitText: p.named });
+        }
+      }
       continue;
     }
     let sum = 0;
@@ -474,7 +525,7 @@ export function publishedFields(packet) {
   const out = [];
   const keys = new Set();
   for (const field of joinedFields(packet)) {
-    const kind = kindOf(field, packet.id);
+    const kind = kindOf(field, packet);
     if (!kind || keys.has(kind.key)) continue;
     keys.add(kind.key);
     out.push({ field, kind });
