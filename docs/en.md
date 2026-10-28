@@ -1,61 +1,119 @@
-# Demo Devices Template
+# RESOL (KM2, DL2, DL2Plus, DL3)
 
-This is the user documentation of the integration. Gladys re-hosts this file
-and shows a permanent **Documentation** link to it in the Configuration screen
-(in the user's language, with English as the fallback) — it is when
-configuring that the user needs it most. Keep the short onboarding hints in
-the `section` blocks of the manifest `config_schema`; put the long
-step-by-step (screenshots, troubleshooting…) here.
+Unofficial integration, not affiliated with RESOL. It reads your **RESOL
+solar and heating controllers** (DeltaSol and the other devices of the VBus)
+through the local HTTP API of a **KM2**, **DL2**, **DL2Plus** or **DL3** on
+your network. **Read-only**: it never changes a setting. No cloud: VBus.net is
+never contacted.
+
+**Never tested with a real device**: built from the API as the Home Assistant
+integration hass-Deltasol-KM2 uses it and from the documentation of the DLx
+format. Feedback welcome.
+
+## Supported devices
+
+- **KM2** and **DL2Plus**: the user name and the password of the web
+  interface are needed;
+- **DL2** and **DL3**: a password only if the data logger does not let a guest
+  read the live data; a filter defined on the data logger may be used;
+- **KM1** (old) and **VBus/LAN** or **VBus/USB** adapters: not directly. They
+  work through the `json-live-data-server` of resol-vbus, which presents
+  itself as a DL2 (port 3333, no password).
 
 ## What you get
 
-Six demo devices show up after installation: a weather station (real data
-from Open-Meteo), a switch, a dimmable light, a smart plug with power
-metering, a motion sensor and a camera.
+One device per controller or module on the VBus (named after it, e.g.
+`RESOL DeltaSol MX [Regler]`), with the values the data logger announces,
+**under the names of its VBus specification file (VSF)**, in its language
+(keep the VSF up to date):
+
+- temperatures (°C; an open sensor line, 888.8 °C, or a short circuit,
+  -888.8 °C, is never published);
+- pressures (bar);
+- pump speeds (%), flows (l/h), powers (W), irradiance (W/m²)…: the unit is
+  in the name;
+- **lifetime counters**: heat quantities (kWh, "lifetime" in the name) and
+  operating hours (h);
+- counters of a period (today, week, month, year): plain sensors, which go
+  back to 0 normally.
+
+Values without a unit (error masks, versions, dates, times of day) are not
+published. Heat quantities are **heat**, not electricity: they never go to
+the Gladys energy monitoring (they would be counted as electricity there).
 
 ## Configuration
 
-1. Open the **Configuration** tab of the integration.
-2. Set the **latitude** and **longitude** the demo weather station should
-   observe (they default to Paris), and pick your temperature unit.
-   The **refresh interval** sets how often the weather station and the
-   plug's power are read: every 5 minutes by default, every minute at most.
-3. Save: the devices appear in the **Discovery** tab, ready to be added.
+1. Give the KM2 / DL2 / DL3 a fixed address in your router.
+2. In Gladys, install the integration and fill in:
+   - **Address**: its IP address; add a port only if it is not 80 (`:3333`
+     for the json-live-data-server). `https://` is refused: the device
+     answers in plain HTTP;
+   - **User name**: the one of the web interface (`admin` by default);
+   - **Password**: the one of the web interface (see above);
+   - **Filter** (DL2 / DL3, optional): the id of a filter of the data logger;
+   - **Reading interval**: 60 s by default (60 to 900).
+3. Click **Test the connection**, then create the devices from the
+   **Discover** tab.
 
-The **Prefer the local connection** toggle drives the demo plug: it reports
-the channel it actually uses as a badge (local or cloud), with an orange dot
-when it runs degraded (local refused, cloud fallback).
+## How it reads
 
-## Actions
+Each read first asks the identity of the device
+(`get_resol_device_information`: product and serial number), then the live
+data: on a KM2 or a DL2Plus, a JSON-RPC log-in with the user name and the
+password then `dataGetCurrentData`; on a DL2 or a DL3, `/dlx/download/live`
+(the data logger takes the user name and the password in the address of the
+request: that is its API). One read at a time, never faster than the
+interval: not on the test button, not on Discovery, not on a reconnection,
+not after a restart of the container (it waits the interval plus a minute
+after the last read). A new address, user name or password is read at once.
 
-- **Test the weather provider** — performs a live request to Open-Meteo and
-  shows the current temperature and humidity under the button.
-- **Identify a device** — pick one of your devices in the list and it will
-  signal itself (the demo light "blinks" in the logs).
+- **User name or password refused** (HTTP 401 or 403, or an error to the
+  JSON-RPC log-in): reads stop until new credentials are saved or **Test the
+  connection** is clicked (one try per click). An unreachable device, no
+  answer, an unexpected answer, an unknown filter or a KM2 without a password
+  is no refusal: new try after 1 min, then up to every 15 min.
+- **Identity**: the values only go to the devices of the serial number read
+  in the same read. Another serial number at the same address has its own
+  devices.
+- **Frozen values**: a VBus packet whose time stamp has not moved for 15 min
+  (the controller no longer sends it) is no longer published; the status says
+  so.
+- A value the device marks as missing (an empty text) is never published as 0.
 
-## Scenes
+## Lifetime counters
 
-The integration adds its own cards to the scene editor (Gladys 5.1 or
-later), under the **Integrations** category:
+A heat quantity or an hour counter only goes up. Each counter goes through a
+guard:
 
-- **Motion detected** (trigger) — starts the scene when a demo motion sensor
-  sees something move. Optionally pick the sensor and what moved (person,
-  animal); left empty, any detection matches. The following actions can
-  read what moved with `{{triggerEvent.data.target}}`.
-- **Identify a device** (action) — makes the chosen device signal itself.
-  It returns whether the device could signal itself, so the following
-  actions can depend on it.
+- 0, a missing value or a text is never published;
+- a **drop** (a reset, a controller replaced) or a **jump** (more than 200 kW
+  on average plus 2 kWh for the heat, more than one hour per hour plus 2 h for
+  the hours) since the last value is **held**: the last accepted value is sent
+  again, the status shows it, and time never confirms it (the guard counts the
+  time elapsed in the integration: a clock corrected while it runs changes
+  nothing; at its restart it starts again from the time of the system, and a
+  date saved in the future is brought back to now);
+- if it is right, click **Accept the held counter** twice (the first click
+  lists, the second, 3 s to 5 min later, accepts exactly what was listed).
+  Saving the configuration accepts nothing.
 
-## Dashboard
+A counter of a period whose name is not recognized (the words for "today",
+"week", "month", "year" in English, French, German, Italian, Dutch and
+Spanish) is taken as a lifetime counter: its return to 0 is then held, never
+published as a drop.
 
-Add the **Demo status** widget to a dashboard: it shows the live
-temperature of the weather station and the power of the office plug, the
-connection the plug currently uses (orange when degraded) and the observed
-location. Its **Identify the light** button makes the demo light signal
-itself.
+## Privacy and security
 
-## Troubleshooting
+The password is kept by Gladys in its database, never shown again, sent only
+to the device on your network. It is never written to the logs, to `/data`
+nor in a status. After a refusal, `/data` keeps an 8-bit salted fingerprint
+(to tell after a restart whether the form changed), erased by the next
+successful read. The connection is plain HTTP on your network, as the web
+interface of the device.
 
-The integration logs everything it does: check the integration logs from the
-Gladys UI (or `docker logs` on the host) with `LOG_LEVEL=debug` for the full
-detail.
+## Limits
+
+- One KM2 / DL2 / DL3 per integration.
+- No command (read-only).
+- The names of the values are those of the VSF of the device: neither
+  translated nor guessed.

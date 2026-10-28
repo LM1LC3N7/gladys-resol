@@ -1,177 +1,107 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "RESOL",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Unofficial: RESOL solar and heating controllers via KM2, DL2, DL3, read-only.",
+    "fr": "Non officiel : régulateurs solaires et chauffage RESOL via KM2, DL2, DL3, lecture seule."
   },
-  "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/lm1lc3n7/gladys-resol:0.1.0",
   "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "cover_image": "https://raw.githubusercontent.com/LM1LC3N7/gladys-resol/main/cover.png",
+  "categories": ["climate", "energy"],
+  "transports": ["local"],
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
+      "label": { "en": "RESOL KM2 / DL2 / DL3", "fr": "RESOL KM2 / DL2 / DL3" },
       "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+        "en": "Unofficial connector, not affiliated with RESOL. It reads your RESOL solar and heating controllers (DeltaSol and the others on the VBus) through the local HTTP API of a KM2, DL2, DL2Plus or DL3 on your network, every 60 s by default: temperatures, pump speeds, operating hours, heat quantities, pressures, flows. One device per controller or module on the VBus, with the names of its VBus specification file (VSF). No cloud: VBus.net is never contacted. Read-only: it never changes a setting. A KM1 or a VBus/LAN adapter works only through the resol-vbus json-live-data-server. Never tested with a real device.",
+        "fr": "Connecteur non officiel, sans lien avec RESOL. Il lit vos régulateurs solaires et de chauffage RESOL (DeltaSol et les autres sur le VBus) par l'API HTTP locale d'un KM2, DL2, DL2Plus ou DL3 sur votre réseau, toutes les 60 s par défaut : températures, vitesses des pompes, heures de fonctionnement, quantités de chaleur, pressions, débits. Un appareil par régulateur ou module sur le VBus, avec les noms de son fichier de spécification VBus (VSF). Sans cloud : VBus.net n'est jamais contacté. Lecture seule : il ne change jamais un réglage. Un KM1 ou un adaptateur VBus/LAN ne fonctionne qu'à travers le json-live-data-server de resol-vbus. Jamais testé avec un vrai appareil."
       },
       "links": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "url": "https://github.com/LM1LC3N7/gladys-resol/blob/main/docs/fr.md",
+          "label": { "en": "Guide (French)", "fr": "Guide (français)" }
+        },
+        {
+          "url": "https://github.com/LM1LC3N7/gladys-resol/blob/main/docs/en.md",
+          "label": { "en": "Guide (English)", "fr": "Guide (anglais)" }
         }
       ]
     },
     {
-      "key": "latitude",
-      "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
+      "key": "address",
+      "type": "string",
       "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
-    },
-    {
-      "key": "longitude",
-      "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
+      "label": { "en": "Address of the KM2 / DL2 / DL3", "fr": "Adresse du KM2 / DL2 / DL3" },
       "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
+        "en": "The IP address of the KM2, DL2, DL2Plus or DL3 on your network (shown by your router), with a port only if it is not 80 (3333 for the resol-vbus json-live-data-server). Preferably give it a fixed address in your router.",
+        "fr": "L'adresse IP du KM2, DL2, DL2Plus ou DL3 sur votre réseau (visible dans votre box), avec un port seulement s'il n'est pas 80 (3333 pour le json-live-data-server de resol-vbus). Donnez-lui de préférence une adresse fixe dans votre box."
       },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
+      "placeholder": { "en": "e.g. 192.168.1.70", "fr": "ex. 192.168.1.70" }
     },
     {
-      "key": "unit",
-      "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
-      "required": false,
-      "default": "celsius",
-      "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
-      ]
-    },
-    {
-      "key": "poll_frequency",
-      "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
+      "key": "username",
+      "type": "string",
+      "label": { "en": "User name", "fr": "Identifiant" },
       "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+        "en": "The user name of the web interface of the device (\"admin\" when left empty). It is never written to the logs nor shown in a status.",
+        "fr": "L'identifiant de l'interface web de l'appareil (« admin » s'il est laissé vide). Il n'est jamais écrit dans les journaux ni affiché dans un état."
       },
-      "required": false,
-      "default": 300,
+      "default": "admin"
+    },
+    {
+      "key": "password",
+      "type": "secret",
+      "label": { "en": "Password", "fr": "Mot de passe" },
+      "description": {
+        "en": "The password of the web interface of the device: needed for a KM2 or a DL2Plus; for a DL2 or a DL3, only if it does not let a guest read the live data (leave empty for the json-live-data-server). Kept by Gladys in its database, never shown again, sent only to the device on your network.",
+        "fr": "Le mot de passe de l'interface web de l'appareil : nécessaire pour un KM2 ou un DL2Plus ; pour un DL2 ou un DL3, seulement s'il ne laisse pas un invité lire les données en direct (laissez vide pour le json-live-data-server). Gardé par Gladys dans sa base, jamais réaffiché, envoyé seulement à l'appareil sur votre réseau."
+      }
+    },
+    {
+      "key": "filter",
+      "type": "string",
+      "label": { "en": "Filter (DL2 / DL3, optional)", "fr": "Filtre (DL2 / DL3, facultatif)" },
+      "description": {
+        "en": "The id of a filter defined on the DL2 or DL3, to read only its values. Leave empty to read everything. Ignored by a KM2 and a DL2Plus.",
+        "fr": "L'identifiant d'un filtre défini sur le DL2 ou le DL3, pour ne lire que ses valeurs. Laissez vide pour tout lire. Ignoré par un KM2 et un DL2Plus."
+      }
+    },
+    {
+      "key": "poll_interval",
+      "type": "number",
+      "label": { "en": "Reading interval (seconds)", "fr": "Intervalle de lecture (secondes)" },
+      "description": {
+        "en": "How often the device is read, from 60 to 900 seconds. Never faster, except right after you save a new address, user name or password.",
+        "fr": "Fréquence de lecture de l'appareil, de 60 à 900 secondes. Jamais plus vite, sauf juste après l'enregistrement d'une nouvelle adresse, d'un nouvel identifiant ou d'un nouveau mot de passe."
+      },
+      "default": 60,
       "min": 60,
-      "max": 3600
+      "max": 900
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
+      "key": "test_connection",
+      "timeout_seconds": 30,
+      "label": { "en": "Test the connection", "fr": "Tester la connexion" },
+      "description": {
+        "en": "Reads the device once, if the reading interval allows it (also after a refused password: one try per click), and shows its product, serial number and the number of VBus devices read.",
+        "fr": "Lit une fois l'appareil, si l'intervalle de lecture le permet (aussi après un mot de passe refusé : un essai par clic), et affiche son produit, son numéro de série et le nombre d'appareils VBus lus."
+      }
     },
     {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ]
-    }
-  ],
-  "scene_triggers": [
-    {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "accept_held_counter",
+      "timeout_seconds": 30,
+      "label": { "en": "Accept the held counter", "fr": "Accepter le compteur retenu" },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
-      },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
-        },
-        {
-          "key": "target",
-          "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
-          "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
-          ]
-        }
-      ],
-      "variables": [
-        {
-          "key": "target",
-          "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
-        }
-      ]
-    }
-  ],
-  "scene_actions": [
-    {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
-      },
-      "timeout_seconds": 15,
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ],
-      "outputs": [
-        {
-          "key": "signalled",
-          "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
-        }
-      ]
-    }
-  ],
-  "widgets": [
-    {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
-      },
-      "icon": "activity",
-      "action_timeout_seconds": 15
+        "en": "Only when the status shows a lifetime counter held back (heat quantity or operating hours: a drop after a reset or a new controller, or a jump) and it is right. First click: lists what is held. Second click (after a few seconds, within 5 min): accepts exactly that. Saving the configuration never accepts anything.",
+        "fr": "Seulement quand l'état affiche un compteur à vie retenu (quantité de chaleur ou heures de fonctionnement : une baisse après une remise à zéro ou un nouveau régulateur, ou un saut) et qu'il est juste. Premier clic : liste ce qui est retenu. Second clic (après quelques secondes, dans les 5 min) : accepte exactement cela. Enregistrer la configuration n'accepte jamais rien."
+      }
     }
   ]
 }

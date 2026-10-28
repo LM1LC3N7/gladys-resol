@@ -1,67 +1,126 @@
-# Template de démonstration
+# RESOL (KM2, DL2, DL2Plus, DL3)
 
-Ceci est la documentation utilisateur de l'intégration. Gladys ré-héberge ce
-fichier et affiche un lien **Documentation** permanent vers lui dans l'écran
-de configuration (dans la langue de l'utilisateur, avec l'anglais en repli) —
-c'est au moment de configurer que l'utilisateur en a le plus besoin. Gardez
-les courtes indications d'accueil dans les blocs `section` du `config_schema`
-du manifest ; mettez ici le pas-à-pas détaillé (captures d'écran, dépannage…).
+Intégration non officielle, sans lien avec RESOL. Elle lit vos **régulateurs
+solaires et de chauffage RESOL** (DeltaSol et les autres appareils du VBus)
+par l'API HTTP locale d'un **KM2**, **DL2**, **DL2Plus** ou **DL3** sur votre
+réseau. **Lecture seule** : elle ne change jamais un réglage. Sans cloud :
+VBus.net n'est jamais contacté.
+
+**Jamais testé avec un vrai appareil** : construite à partir de l'API telle que
+l'utilise l'intégration Home Assistant hass-Deltasol-KM2 et de la
+documentation du format DLx. Vos retours sont les bienvenus.
+
+## Appareils pris en charge
+
+- **KM2** et **DL2Plus** : identifiant et mot de passe de l'interface web
+  nécessaires ;
+- **DL2** et **DL3** : mot de passe seulement si l'enregistreur ne laisse pas
+  un invité lire les données en direct ; un filtre défini sur l'enregistreur
+  peut être utilisé ;
+- **KM1** (ancien) et adaptateurs **VBus/LAN** ou **VBus/USB** : pas
+  directement. Ils fonctionnent à travers le `json-live-data-server` de
+  resol-vbus, qui se présente comme un DL2 (port 3333, sans mot de passe).
 
 ## Ce que vous obtenez
 
-Six appareils de démonstration apparaissent après l'installation : une
-station météo (vraies données Open-Meteo), un interrupteur, une lampe
-variable, une prise connectée avec mesure de puissance, un détecteur de
-mouvement et une caméra.
+Un appareil par régulateur ou module présent sur le VBus (nommé d'après lui,
+ex. `RESOL DeltaSol MX [Regler]`), avec les valeurs que l'enregistreur
+annonce, **sous les noms de son fichier de spécification VBus (VSF)**, dans
+sa langue (gardez le VSF à jour) :
+
+- températures (°C ; un capteur coupé, 888,8 °C, ou en court-circuit,
+  -888,8 °C, n'est jamais publié) ;
+- pressions (bar) ;
+- vitesses des pompes (%), débits (l/h), puissances (W), rayonnement
+  (W/m²)… : l'unité est dans le nom ;
+- **compteurs à vie** : quantités de chaleur (kWh, « lifetime » dans le nom)
+  et heures de fonctionnement (h) ;
+- compteurs d'une période (aujourd'hui, semaine, mois, année) : de simples
+  capteurs, qui reviennent à 0 normalement.
+
+Les valeurs sans unité (masques d'erreur, versions, dates, heures du jour)
+ne sont pas publiées. Les quantités de chaleur sont de la **chaleur**, pas de
+l'électricité : elles ne vont jamais au suivi énergétique de Gladys (elles y
+seraient comptées comme de l'électricité).
 
 ## Configuration
 
-1. Ouvrez l'onglet **Configuration** de l'intégration.
-2. Renseignez la **latitude** et la **longitude** que la station météo de
-   démonstration doit observer (Paris par défaut), et choisissez votre unité
-   de température. L'**intervalle de rafraîchissement** règle la fréquence
-   de lecture de la station météo et de la puissance de la prise : toutes
-   les 5 minutes par défaut, toutes les minutes au plus.
-3. Enregistrez : les appareils apparaissent dans l'onglet **Découverte**,
-   prêts à être ajoutés.
+1. Donnez au KM2 / DL2 / DL3 une adresse fixe dans votre box.
+2. Dans Gladys, installez l'intégration et remplissez :
+   - **Adresse** : son adresse IP ; ajoutez un port seulement s'il n'est pas
+     80 (`:3333` pour le json-live-data-server). `https://` est refusé :
+     l'appareil répond en HTTP simple ;
+   - **Identifiant** : celui de l'interface web (`admin` par défaut) ;
+   - **Mot de passe** : celui de l'interface web (voir plus haut) ;
+   - **Filtre** (DL2 / DL3, facultatif) : l'identifiant d'un filtre de
+     l'enregistreur ;
+   - **Intervalle de lecture** : 60 s par défaut (60 à 900).
+3. Cliquez sur **Tester la connexion**, puis créez les appareils depuis
+   l'onglet **Découverte**.
 
-Le réglage **Préférer la connexion locale** pilote la prise de
-démonstration : elle affiche en badge le canal réellement utilisé (local ou
-cloud), avec un point orange quand elle fonctionne en mode dégradé (local
-refusé, bascule cloud).
+## Comment il lit
 
-## Actions
+Chaque lecture demande d'abord l'identité de l'appareil
+(`get_resol_device_information` : produit et numéro de série), puis les
+données en direct : sur un KM2 ou un DL2Plus, une connexion JSON-RPC avec
+l'identifiant et le mot de passe puis `dataGetCurrentData` ; sur un DL2 ou un
+DL3, `/dlx/download/live` (l'enregistreur prend l'identifiant et le mot de
+passe dans l'adresse de la requête : c'est son API). Une lecture à la fois,
+jamais plus vite que l'intervalle : ni au bouton de test, ni à la Découverte,
+ni à une reconnexion, ni après un redémarrage du conteneur (il attend
+l'intervalle plus une minute après la dernière lecture). Une nouvelle adresse,
+un nouvel identifiant ou un nouveau mot de passe est lu tout de suite.
 
-- **Tester le fournisseur météo** — effectue une requête en direct vers
-  Open-Meteo et affiche la température et l'humidité actuelles sous le
-  bouton.
-- **Identifier un appareil** — choisissez un de vos appareils dans la liste
-  et il se signale (la lampe de démonstration « clignote » dans les logs).
+- **Identifiant ou mot de passe refusé** (HTTP 401 ou 403, ou erreur à la
+  connexion JSON-RPC) : les lectures s'arrêtent jusqu'à l'enregistrement de
+  nouveaux identifiants ou un clic sur **Tester la connexion** (un essai par
+  clic). Un appareil injoignable, une absence de réponse, une réponse
+  inattendue, un filtre inconnu ou un KM2 sans mot de passe n'est pas un
+  refus : nouvel essai après 1 min, puis jusqu'à toutes les 15 min.
+- **Identité** : les valeurs ne vont qu'aux appareils du numéro de série lu
+  dans la même lecture. Un autre numéro de série à la même adresse a ses
+  propres appareils.
+- **Valeurs figées** : un paquet VBus dont l'horodatage ne bouge plus depuis
+  15 min (le régulateur ne l'envoie plus) n'est plus publié ; l'état le
+  signale.
+- Une valeur que l'appareil marque comme absente (texte vide) n'est jamais
+  publiée comme 0.
 
-## Scènes
+## Compteurs à vie
 
-L'intégration ajoute ses propres cartes à l'éditeur de scènes (Gladys 5.1
-ou plus récent), dans la catégorie **Intégrations** :
+Une quantité de chaleur ou un compteur d'heures ne fait que monter. Chaque
+compteur passe par une garde :
 
-- **Mouvement détecté** (déclencheur) — lance la scène quand un détecteur
-  de démonstration voit bouger quelque chose. Choisissez éventuellement le
-  détecteur et ce qui a bougé (personne, animal) ; laissés vides, toute
-  détection correspond. Les actions suivantes peuvent lire ce qui a bougé
-  avec `{{triggerEvent.data.target}}`.
-- **Identifier un appareil** (action) — fait se signaler l'appareil choisi.
-  Elle indique si l'appareil a pu se signaler, pour que les actions
-  suivantes puissent en dépendre.
+- 0, une valeur manquante ou un texte n'est jamais publié ;
+- une **baisse** (remise à zéro, régulateur remplacé) ou un **saut** (plus de
+  200 kW en moyenne plus 2 kWh pour la chaleur, plus d'une heure par heure plus
+  2 h pour les heures) depuis la dernière valeur est **retenu** : la dernière
+  valeur acceptée est renvoyée, l'état l'affiche, et le temps ne le confirme
+  jamais (la garde compte le temps écoulé de l'intégration : une horloge
+  corrigée pendant qu'elle tourne n'y change rien ; à son redémarrage, elle
+  repart de l'heure du système, et une date enregistrée dans le futur est
+  ramenée à maintenant) ;
+- s'il est juste, cliquez deux fois sur **Accepter le compteur retenu** (le
+  premier clic liste, le second, de 3 s à 5 min plus tard, accepte exactement
+  ce qui a été listé). Enregistrer la configuration n'accepte rien.
 
-## Tableau de bord
+Un compteur de période dont le nom n'est pas reconnu (les mots « aujourd'hui »,
+« semaine », « mois », « année » en français, anglais, allemand, italien,
+néerlandais et espagnol) est traité comme un compteur à vie : sa remise à 0
+est alors retenue, jamais publiée comme une baisse.
 
-Ajoutez le widget **État de la démo** à un tableau de bord : il affiche en
-direct la température de la station météo et la puissance de la prise du
-bureau, la connexion utilisée par la prise (en orange si dégradée) et la
-position observée. Son bouton **Identifier la lampe** fait se signaler la
-lampe de démonstration.
+## Confidentialité et sécurité
 
-## Dépannage
+Le mot de passe est gardé par Gladys dans sa base, jamais réaffiché, envoyé
+seulement à l'appareil sur votre réseau. Il n'est jamais écrit dans les
+journaux, dans `/data` ni dans un état. Après un refus, `/data` garde une
+empreinte salée de 8 bits (pour voir après un redémarrage si le formulaire a
+changé), effacée à la lecture réussie suivante. La connexion est en HTTP
+simple sur votre réseau, comme l'interface web de l'appareil.
 
-L'intégration journalise tout ce qu'elle fait : consultez les logs de
-l'intégration depuis l'interface Gladys (ou `docker logs` sur l'hôte) avec
-`LOG_LEVEL=debug` pour le détail complet.
+## Limites
+
+- Un KM2 / DL2 / DL3 par intégration.
+- Aucune commande (lecture seule).
+- Les noms des valeurs sont ceux du VSF de l'appareil : ni traduits ni
+  devinés.

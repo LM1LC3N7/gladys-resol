@@ -11,66 +11,70 @@ Gladys through
 [`@gladysassistant/integration-sdk`](https://github.com/GladysAssistant/integration-sdk-js),
 its only runtime dependency. It started from the official JavaScript template.
 
+It reads **RESOL** solar and heating controllers through the local HTTP API of
+a KM2, DL2, DL2Plus or DL3: `get_resol_device_information` (product, serial
+number), then the live data (KM2 / DL2Plus: JSON-RPC `login` +
+`dataGetCurrentData`; DL2 / DL3: `/dlx/download/live`). Requests ported from
+[hass-Deltasol-KM2](https://github.com/dm82m/hass-Deltasol-KM2) (MIT, see
+`THIRD_PARTY_NOTICES.md`). Unofficial. **Read-only**: never `onSetValue`, never
+a request that sets anything. Sibling: `gladys-openems` (structure, app, store,
+guard, `connected` retry), itself after `gladys-e3dc` and `gladys-p1-monitor`.
+
 ## Commands
 
 ```bash
 npm install
-npm test                                  # node --test, the built-in runner
-node --test test/devices.test.js          # one file
-node --test --test-name-pattern "plug"    # tests whose name matches
+npm test                                  # node --test --test-timeout=60000
+node --test test/client.test.js           # one file (a fake device on 127.0.0.1)
+node --test --test-name-pattern "counter" # tests whose name matches
+npm run audit                             # npm audit --omit=dev
 npm run lint                              # ESLint
 npm run format:check                      # Prettier, as the CI runs it
-npm run format                            # Prettier, fix in place
-npx github:GladysAssistant/integration-store .   # store admission checks
+node scripts/cover.mjs cover.png          # the store cover (800×534)
 ```
-
-The CI (`.github/workflows/ci.yml`) runs `format:check`, `lint` and `test` on
-Node 22 and 24, and builds the Docker image: run the three commands before
-pushing.
 
 ## Architecture
 
 ```
-index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
-src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
-gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
-test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
-.github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
+index.js                SDK wiring only (src/handlers.js)
+src/handlers.js         every handler, registered before connect()
+src/app.js              ResolApp: pace, reads, identity, devices, counters, refusal, buttons
+src/resol/client.js     the only network access: one read at a time, bounded
+src/resol/model.js      the answers read strictly (device information, DLx live data)
+src/devices.js          units, kinds (lifetime / period counters), devices, values (pure)
+src/guard.js            plausibility of a lifetime counter (gladys-openems, rate/slack)
+src/store.js            what /data keeps across restarts (unreadable ≠ empty)
+src/config.js           the form, normalized
+src/constants.js        timings, bounds, limits, manifest keys
+src/i18n.js             runtime texts (en/fr)
+test/kit/               copied from ~/code/ref/gladys-testkit (clock, HTTP fake)
+test/helpers/           fixtures of the DLx format, the app against the fake Gladys
 ```
 
 ## Rules
 
-- **External ids are forever.** Build them with
-  `gladys.externalIds(type, platformId)`, `platformId` being the unique id the
-  platform gives the device (serial, cloud id, MAC), never a label. Gladys keys
-  devices, their history, scenes and dashboards on them: changing one creates a
-  new device and orphans the old one. The same goes for every key users store:
-  manifest `config_schema`, `actions`, widget and scene keys, feature keys.
-- **The container rootfs is read-only.** Write only under `/data`, the one
-  writable volume. Never log tokens, passwords or API keys.
-- **Versions belong to the Release workflow** (Actions → Release). Never edit
-  `version` in `package.json` or in the manifest, nor the `docker_image` tag,
-  by hand — except on the README's hand-pushed tag path, which bumps all three
-  together before tagging. `test/manifest.test.js` checks they agree.
-- **Changelog.** Every user-visible change adds a line under `## [Unreleased]`
-  in `CHANGELOG.md` (`### Added`, `Changed`, `Fixed`, `Removed`, `Security`).
-  Never write a version heading: the Release workflow moves the section, and it
-  becomes the notes of the GitHub Release.
-- **Manifest.** Texts are multi-language objects `{ "en": ..., "fr": ... }`:
-  `label`, `description` and `placeholder` alike, never a plain string. The
-  catalog `description` holds 10 to 100 characters per language. A field the
-  older cores do not know needs a higher `gladys_version` minimum
-  (`categories`: 4.86.0; `widgets`, `scene_triggers`, `scene_actions`,
-  `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
-  code (defaults, action, scene and widget handlers): change both sides
-  together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
-- **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
-  in English. Tests never touch the network.
+- **Read-only.** No `onSetValue`; the client sends only the requests above. A
+  command, if one is ever added, is a `button` disabled by default behind an
+  option, never a `switch`.
+- **Secrets**: the password only goes to the configured address (JSON-RPC
+  log-in, or the query of `/dlx/download/live`, the API of the data logger);
+  never logged, shown, written to `/data` nor put in an error (the client's
+  errors are codes only, never the path). `/data` keeps only an 8-bit
+  fingerprint of a REFUSED log-in, erased by the first success.
+- **Refusal**: HTTP 401 / 403 or an error to the JSON-RPC `login`; a final stop
+  in `/data`, only new fields or the test button (one try per click) try
+  again. Nothing else is a refusal.
+- **Pace**: never a read faster than the interval, whatever asks. One read at
+  a time; a stop cuts it. A read of an old generation publishes nothing and
+  sets no status. Each decision reads each clock once; the guards run on the
+  session clock.
+- **Values**: names from the device (VSF), never guessed; a value is a number
+  only when `raw_value` is finite and its text is not empty; bounds per unit
+  (888.8 °C is no temperature); units without a mapping are not published.
+- **Lifetime counters** (energy and hours whose name is not of a period):
+  through `IndexGuard`, never 0, never a drop nor a jump without the two-click
+  action. Heat is never an energy of the energy monitoring.
+- **External ids are forever**: `resol:<serial>_<packet id>`, feature keys
+  `<field id>_<unit key>[_total]`, the manifest keys. A created device
+  published again never loses a feature.
+- **Units**: only those of `DEVICE_FEATURE_UNITS_BY_CATEGORY` in the core.
