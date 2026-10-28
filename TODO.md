@@ -114,3 +114,12 @@
   product is known only after the first request.
 - **Reading interval**: 60 s by default, 60 to 900 s (hass-Deltasol-KM2:
   minimum 60 s).
+
+## Next patch
+
+- r4 m1: the 1000 rule (`src/devices.js:496-506`) is decided on every read, so the feature set changes when a
+  group switches between summed and separate (0x105b, Atlantic SOLERIO V3, EMZ/CME): a `_sum` feature stops
+  receiving values until "Update" in Discovery, and one odd read flips Discovery for that read. Make the
+  decision sticky in /data after several reads in a row, and say in the status when a value read has no
+  feature on a created device.
+- r4 m2: the generator could write the fixture already formatted instead of asking for `prettier --write`.
