@@ -3,7 +3,7 @@
 // h). Pure.
 //
 // Taken as it is from gladys-openems (src/guard.js, itself gladys-p1-monitor's
-// approved guard), with one change only: the margin is `rate` (units per
+// approved guard), with two changes: the margin is `rate` (units per
 // hour) and `slack` (units), so that the same guard serves the energy and the
 // hour counters; each kind passes its own (src/constants.js COUNTER_LIMITS).
 //
@@ -22,7 +22,8 @@
 // - the acceptance is BOUNDED: it covers the value shown (`held.to`, read at
 //   `held.at`) and what may have been added since (rate × hours + slack),
 //   nothing else: a drop taken (a reset, a new controller) is the new
-//   reference and the values rise from there. A value outside the bounds is
+//   reference and the values rise from there (a value below the one
+//   accepted is held again: change from gladys-openems, review r1 m1). A value outside the bounds is
 //   held again and the acceptance dropped;
 // - while a jump is held, every value at or above it stays held: the margin
 //   growing while nothing is published must never cover it;
@@ -118,9 +119,11 @@ export class IndexGuard {
 
   /** Whether `value` is within the acceptance: the value shown, plus the margin since. */
   withinAccepted(value, at) {
-    const { direction, to, at: since } = this.accepted;
+    const { to, at: since } = this.accepted;
+    // The value accepted is the new floor, either way: a glitch below it is
+    // a drop of its own, held again (review r1, m1).
     const top = to + this.margin(since, at);
-    return direction === 'up' ? value >= to && value <= top : value <= top;
+    return value >= to && value <= top;
   }
 
   /** Whether `value`, read at `at`, may be published. A published value becomes the reference. */

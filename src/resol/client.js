@@ -40,8 +40,9 @@ import { parseInfo } from './model.js';
  * - `protocol`: an answer that is not the API expected;
  * - `password_needed`: a KM2 / DL2Plus and no password in the configuration
  *   (nothing sent to it);
- * - `refused`: the user name or the password refused (HTTP 401 / 403, or an
- *   error answered to the JSON-RPC log-in);
+ * - `refused`: the user name or the password refused (HTTP 401 / 403 to the
+ *   log-in or the live data, or an error answered to the JSON-RPC log-in but
+ *   the standard protocol errors -32700 and -32600 to -32603);
  * - `denied`: the log-in accepted, the data refused;
  * - `filter`: the DL2 / DL3 does not know the filter (InvalidFilterID);
  * - `http`: another HTTP status (`status`);
@@ -233,7 +234,7 @@ export class ResolClient {
       this.request({ host, port, timeout: this.requestTimeout, ...options }, signal);
     const infoAnswer = await call({ path: PATHS.INFO, maxBytes: MAX_INFO_BYTES });
     if (infoAnswer.status === 404) throw new ResolError('not_resol');
-    if (infoAnswer.status === 401 || infoAnswer.status === 403) throw new ResolError('refused');
+    // No credential goes with this request: a 401 / 403 here is no refusal (review r1, m2).
     if (infoAnswer.status !== 200) throw new ResolError('http', { status: infoAnswer.status });
     const info = parseInfo(infoAnswer.body.toString('utf8'));
     if (!info) throw new ResolError('not_resol');
@@ -261,6 +262,13 @@ export class ResolClient {
     if (login.status !== 200) throw new ResolError('http', { status: login.status });
     const loginReply = firstReply(jsonOf(login.body));
     if (loginReply.error !== undefined && loginReply.error !== null) {
+      // The JSON-RPC errors of the protocol itself (parse error, invalid
+      // request, unknown method, invalid params, internal error) are no
+      // refusal (review r1, m3); any other error to the log-in is.
+      const code = loginReply.error?.code;
+      if (Number.isInteger(code) && (code === -32700 || (code <= -32600 && code >= -32603))) {
+        throw new ResolError('protocol');
+      }
       throw new ResolError('refused');
     }
     const authId = loginReply.result?.authId;

@@ -35,6 +35,7 @@ import {
   DEVICE_FEATURE_UNITS as U,
 } from '@gladysassistant/integration-sdk';
 import { COUNTER_MAX, EXTERNAL_ID_TYPE, MAX_FEATURES } from './constants.js';
+import { cleanText } from './resol/model.js';
 
 /** The external ids of the VBus packet `packetId` of the device `serial`. */
 export const ids = (gladys, serial, packetId) =>
@@ -114,8 +115,16 @@ export const UNITS = {
     max: 1e5,
     digits: 2,
   },
-  Liters: { key: 'l', text: ['l'], label: 'l', min: 0, max: 1e9, digits: 1 },
-  CubicMeters: { key: 'm3', text: ['m³'], label: 'm³', min: 0, max: 1e7, digits: 3 },
+  Liters: { key: 'l', text: ['l'], label: 'l', min: 0, max: 1e9, digits: 1, volume: 'volume_l' },
+  CubicMeters: {
+    key: 'm3',
+    text: ['m³'],
+    label: 'm³',
+    min: 0,
+    max: 1e7,
+    digits: 3,
+    volume: 'volume_m3',
+  },
   Gallons: {
     key: 'gal2l',
     text: ['gal'],
@@ -124,6 +133,7 @@ export const UNITS = {
     min: 0,
     max: 1e9,
     digits: 1,
+    volume: 'volume_l',
   },
   Volts: { key: 'v', text: ['V'], label: 'V', min: -1000, max: 1000, digits: 2 },
   Milliamperes: { key: 'ma', text: ['mA'], label: 'mA', min: -1000, max: 1000, digits: 2 },
@@ -131,7 +141,7 @@ export const UNITS = {
   Hertz: { key: 'hz', text: ['Hz'], label: 'Hz', min: 0, max: 1e5, digits: 1 },
   MetersPerSecond: { key: 'ms', text: ['m/s'], label: 'm/s', min: 0, max: 200, digits: 2 },
   WattsPerSquareMeter: { key: 'wm2', text: ['W/m²'], label: 'W/m²', min: 0, max: 2000, digits: 0 },
-  Seconds: { key: 's', text: ['s'], label: 's', min: 0, max: 1e9, digits: 0 },
+  Seconds: { key: 's', text: ['s'], label: 's', min: 0, max: 1e9, digits: 0, seconds: true },
   Minutes: { key: 'min', text: ['min'], label: 'min', min: 0, max: 1e8, digits: 0 },
   Days: { key: 'd', text: ['d'], label: 'd', min: 0, max: 1e6, digits: 0 },
   KilogramsPerHour: { key: 'kgh', text: ['kg/h'], label: 'kg/h', min: 0, max: 1e6, digits: 1 },
@@ -157,19 +167,100 @@ export function unitOf(field) {
 }
 
 /**
- * The words of a counter of a period (it returns to 0 by design), in the
- * languages of the VBus specification (en, de, fr, it, nl, es): today,
- * yesterday, day, week, month, year...
+ * The words of a name: split at spaces, punctuation, `_`, the CamelCase of
+ * the VSF (`Wmz1_ValueToday_Wh` → wmz, 1, value, today, wh) and between
+ * letters and digits; lower-cased. The units kWh / MWh stay one word.
  */
-const PERIODIC =
-  /\b(today|yesterday|daily|day|week(ly)?|month(ly)?|year(ly)?|heute|gestern|tag(es)?|woche|monat|jahr(es)?|aujourd|hier|jour(nali[eè]re)?|semaine|mois|ann[ée]e|oggi|ieri|giorno|settimana|mese|anno|vandaag|gisteren|dag|maand|jaar|hoy|ayer|d[ií]a|semana|mes|a[ñn]o)\b/iu;
-
-export const isPeriodic = (name) => PERIODIC.test(String(name ?? '').normalize('NFC'));
+export function wordsOf(name) {
+  return String(name ?? '')
+    .normalize('NFC')
+    .replace(/kWh/g, ' kwh ')
+    .replace(/MWh/g, ' mwh ')
+    .replace(/(\p{Ll})(\p{Lu})/gu, '$1 $2')
+    .replace(/(\p{L})(\p{N})/gu, '$1 $2')
+    .replace(/(\p{N})(\p{L})/gu, '$1 $2')
+    .toLowerCase()
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter(Boolean);
+}
 
 /**
- * What a field of the live data becomes: `{ key, counter, spec, min, max,
- * digits, convert }`, `counter` 'energy' | 'hours' | undefined, or undefined
- * when it is not published (no unit, a unit not listed).
+ * The words of a counter of a period (it returns to 0 by design), in the
+ * languages of the VSF (en, de, fr) and a few more (it, nl, es): today,
+ * yesterday, week, month, year, the previous ones (Vorwoche...), and the
+ * "ahjourd'hui" of the VSF. "24 h" too (a runtime over 24 h).
+ */
+const PERIODIC = new Set(
+  (
+    'today yesterday daily day week weekly month monthly year yearly ' +
+    'heute gestern tag tages woche wochen monat monats jahr jahres vortag vorwoche vormonat vorjahr ' +
+    'aujourd ahjourd hier jour journalier journaliere journalière semaine mois année annee ' +
+    'oggi ieri giorno settimana mese anno vandaag gisteren dag maand jaar ' +
+    'hoy ayer día dia semana mes año'
+  ).split(' '),
+);
+
+export function isPeriodic(name) {
+  const words = wordsOf(name);
+  return words.some(
+    (w, i) => PERIODIC.has(w) || ((w === '24' || w === '24h') && /^h?$/.test(words[i + 1] ?? '')),
+  );
+}
+
+/** A setting expressed in hours (a time to rise, an estimated or measured dt...), not a counter. */
+const HOUR_SETTING = new Set(
+  'parameter paramètre parametre dt rise anstiegszeit augmentation estimated estimé meas mesuré erw mess'.split(
+    ' ',
+  ),
+);
+/** The words of an operating time counter in seconds (en, de, fr of the VSF). */
+const OPERATING = new Set(
+  (
+    'operating runtime laufzeit betriebssekunden betriebsstunden betriebszeit gesamtbetrieb ' +
+    'gesamtbetriebsstunden stationsbetriebssekunden fonctionnement fonc fonct counter compteur ' +
+    'bsr osr hfr operation umwaelzzeitzähler umwälzzeitzähler'
+  ).split(' '),
+);
+/** A time in seconds that is a setting of a mixer, a valve or a filter, not a counter. */
+const SECONDS_SETTING = new Set('mixer mischer vanne mél filter'.split(' '));
+/** A volume that is a maximum or a minimum (a record or a setting), not a counter. */
+const VOLUME_SETTING = new Set('max maximum min minimum'.split(' '));
+
+/**
+ * The kind of lifetime counter of a field, or undefined: energy (unknown name
+ * = lifetime), hours (but the settings in hours), seconds of an operating
+ * time (by their words), volumes (but the maximums); never a counter of a
+ * period.
+ */
+export function counterOf(field, unit = unitOf(field)) {
+  if (!unit) return undefined;
+  const words = wordsOf(field.name);
+  const has = (set) => words.some((w) => set.has(w));
+  let counter;
+  if (unit.energy) counter = 'energy';
+  else if (unit.hours) counter = has(HOUR_SETTING) ? undefined : 'hours';
+  else if (unit.seconds) counter = has(OPERATING) && !has(SECONDS_SETTING) ? 'hours' : undefined;
+  else if (unit.volume) counter = has(VOLUME_SETTING) ? undefined : unit.volume;
+  return counter && !isPeriodic(field.name) ? counter : undefined;
+}
+
+/** The kind of counter of a feature, from its key (forever), else undefined. */
+export function counterKindOf(featureId) {
+  const key = String(featureId ?? '')
+    .split(':')
+    .at(-1);
+  if (key.endsWith('_kwh_total')) return 'energy';
+  if (key.endsWith('_h_total') || key.endsWith('_s2h_total')) return 'hours';
+  if (key.endsWith('_l_total') || key.endsWith('_gal2l_total')) return 'volume_l';
+  if (key.endsWith('_m3_total')) return 'volume_m3';
+  return undefined;
+}
+
+/**
+ * What a field of the live data becomes: `{ key, counter, spec, label, min,
+ * max, digits, convert }`, `counter` 'energy' | 'hours' | 'volume_l' |
+ * 'volume_m3' | undefined, or undefined when it is not published (no unit, a
+ * unit not listed).
  */
 export function kindOf(field) {
   const unit = unitOf(field);
@@ -177,16 +268,39 @@ export function kindOf(field) {
   const factor = unit.factor ?? 1;
   const offset = unit.offset ?? 0;
   const convert = (value) => (value + offset) * factor;
+  const counter = counterOf(field, unit);
   if (unit.energy || unit.hours) {
-    const periodic = isPeriodic(field.name);
     const label = unit.energy ? 'kWh' : 'h';
     return {
-      key: `${field.id}_${unit.key}${periodic ? '' : '_total'}`,
-      counter: periodic ? undefined : unit.energy ? 'energy' : 'hours',
-      label: periodic ? label : unit.energy ? 'kWh, lifetime' : 'h, lifetime',
+      key: `${field.id}_${unit.key}${counter ? '_total' : ''}`,
+      counter,
+      label: counter ? `${label}, lifetime` : label,
       min: 0,
       max: COUNTER_MAX,
       digits: unit.energy ? 3 : 2,
+      convert,
+    };
+  }
+  if (counter === 'hours') {
+    // An operating time in seconds, published in hours.
+    return {
+      key: `${field.id}_s2h_total`,
+      counter,
+      label: 'h, lifetime',
+      min: 0,
+      max: COUNTER_MAX,
+      digits: 3,
+      convert: (value) => value / 3600,
+    };
+  }
+  if (counter) {
+    return {
+      key: `${field.id}_${unit.key}_total`,
+      counter,
+      label: `${unit.label}, lifetime`,
+      min: 0,
+      max: COUNTER_MAX,
+      digits: unit.digits,
       convert,
     };
   }
@@ -218,11 +332,56 @@ export function featureOf(external, field, kind) {
 
 const cleanName = (name) => [...name].slice(0, 100).join('');
 
+/** A piece of an energy counter split in Wh / kWh / MWh: its base name and its unit. */
+const PIECE = /^(.*?)[\s_-]*(MWh|kWh|Wh)$/;
+
+/**
+ * The fields of a packet, a counter split in pieces (`Heat Wh`, `Heat kWh`,
+ * `Heat MWh`: each piece returns to 0 by construction) put back together: a
+ * group of two pieces or more of the same base name and different units is
+ * dropped when the packet has the total (`Heat`), else replaced by one field
+ * `<id of the first piece>_sum` in kWh (unknown when a piece is).
+ */
+export function joinedFields(packet) {
+  const energy = packet.fields.filter((f) => unitOf(f)?.energy);
+  const groups = new Map();
+  for (const field of energy) {
+    const match = PIECE.exec(field.name);
+    if (!match) continue;
+    const base = cleanText(match[1]);
+    const key = base.toLowerCase();
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push({ field, base, unit: match[2] });
+  }
+  const replace = new Map();
+  for (const [key, list] of groups) {
+    if (list.length < 2 || new Set(list.map((p) => p.unit)).size !== list.length) continue;
+    const pieces = new Set(list.map((p) => p.field));
+    const total = energy.some((f) => !pieces.has(f) && cleanText(f.name).toLowerCase() === key);
+    let sum = 0;
+    for (const { field } of list) {
+      if (typeof field.value !== 'number' || !Number.isFinite(field.value)) sum = undefined;
+      if (sum !== undefined) sum += field.value * (unitOf(field).factor ?? 1);
+    }
+    const joined = total
+      ? undefined
+      : {
+          id: `${list[0].field.id}_sum`,
+          name: list[0].base || 'Energy',
+          unitCode: 'KilowattHours',
+          unitText: 'kWh',
+          value: sum,
+        };
+    for (const [i, { field }] of list.entries()) replace.set(field, i === 0 ? joined : undefined);
+  }
+  return packet.fields.flatMap((f) => (replace.has(f) ? [replace.get(f)].filter(Boolean) : [f]));
+}
+
 /** The features of a packet that are published: `[{ field, kind }]`, MAX_FEATURES at most. */
 export function publishedFields(packet) {
   const out = [];
   const keys = new Set();
-  for (const field of packet.fields) {
+  for (const field of joinedFields(packet)) {
     const kind = kindOf(field);
     if (!kind || keys.has(kind.key)) continue;
     keys.add(kind.key);

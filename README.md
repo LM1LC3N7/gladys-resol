@@ -11,8 +11,11 @@ VBus), read locally through the HTTP API of a **KM2**, **DL2**, **DL2Plus** or
   specification file (VSF).
 - Temperatures, pressures, pump speeds, flows, powers and the other values
   with a unit.
-- Lifetime heat quantities (kWh) and operating hours (h), each guarded: never
-  0, never a drop nor an implausible jump without a two-click acceptance.
+- Lifetime heat quantities (kWh), operating hours (h, also from the operating
+  seconds) and total volumes (l, m³), each guarded: never 0, never a drop nor
+  an implausible jump without a two-click acceptance. Counter names read word
+  by word as the VSF writes them (`Wmz1_ValueToday_Wh`), counters split in
+  Wh / kWh / MWh put back together.
 - KM1 and VBus/LAN adapters through the resol-vbus `json-live-data-server`.
 - No cloud, one read at a time, never faster than the interval (except right
   after a new address or new credentials are saved).

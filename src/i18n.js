@@ -41,6 +41,10 @@ const REASON = {
     fr: 'un KM2 ou un DL2Plus a besoin de l’identifiant et du mot de passe de son interface web',
   },
   refused: { en: 'user name or password refused', fr: 'identifiant ou mot de passe refusé' },
+  password_asked: {
+    en: 'the device asks for a user name and a password: enter those of its web interface',
+    fr: 'l’appareil demande un identifiant et un mot de passe : saisissez ceux de son interface web',
+  },
   denied: {
     en: 'log-in accepted, but the values were refused (user rights?)',
     fr: 'connexion acceptée, mais les valeurs ont été refusées (droits de l’utilisateur ?)',
@@ -63,9 +67,10 @@ export function reason(err) {
   return base;
 }
 
-/** A counter value with its unit: kWh (3 decimals at most) or h. */
-const amount = (value, kind) =>
-  `${Math.round(value * 1000) / 1000} ${kind === 'hours' ? 'h' : 'kWh'}`;
+const UNIT_OF_KIND = { energy: 'kWh', hours: 'h', volume_l: 'l', volume_m3: 'm³' };
+
+/** A counter value with its unit: kWh, h, l or m³ (3 decimals at most). */
+const amount = (value, kind) => `${Math.round(value * 1000) / 1000} ${UNIT_OF_KIND[kind] ?? 'kWh'}`;
 
 const sentences = (lang, list) => list.map((n) => n[lang]).join(' ');
 const both = (list) => ({ en: sentences('en', list), fr: sentences('fr', list) });
@@ -109,8 +114,8 @@ export const T = {
       fr: 'L’adresse n’est pas valide : saisissez une adresse IP ou un nom d’hôte, avec un port éventuel (ex. 192.168.1.70).',
     },
     address_https: {
-      en: 'The address must not start with https://: the device answers in plain HTTP on your network. Enter its IP address only.',
-      fr: 'L’adresse ne doit pas commencer par https:// : l’appareil répond en HTTP simple sur votre réseau. Saisissez seulement son adresse IP.',
+      en: 'The address must not start with https://: this integration only speaks plain HTTP (the password would leave unprotected where you expect HTTPS). Enter the IP address only.',
+      fr: 'L’adresse ne doit pas commencer par https:// : cette intégration ne parle qu’en HTTP simple (le mot de passe partirait sans protection là où vous attendez du HTTPS). Saisissez seulement l’adresse IP.',
     },
     username_invalid: {
       en: 'The user name is not valid (at most 64 characters, no control character). Leave it empty for "admin".',
@@ -139,10 +144,16 @@ export const T = {
     en: `RESOL: next read at ${clock(at)}.`,
     fr: `RESOL : prochaine lecture à ${clock(at)}.`,
   }),
-  refused: (address) => ({
-    en: `${address} refuses the user name or the password: check them, then save the configuration again. Reads stopped until then (the "Test the connection" button tries once).`,
-    fr: `${address} refuse l’identifiant ou le mot de passe : vérifiez-les, puis enregistrez de nouveau la configuration. Lectures arrêtées d’ici là (le bouton « Tester la connexion » fait un essai).`,
-  }),
+  refused: (address, asked = false) =>
+    asked
+      ? {
+          en: `${address} asks for a user name and a password (none is set): enter those of its web interface in the configuration, then save it. Reads stopped until then (the "Test the connection" button tries once).`,
+          fr: `${address} demande un identifiant et un mot de passe (aucun n’est saisi) : saisissez ceux de son interface web dans la configuration, puis enregistrez-la. Lectures arrêtées d’ici là (le bouton « Tester la connexion » fait un essai).`,
+        }
+      : {
+          en: `${address} refuses the user name or the password: check them, then save the configuration again. Reads stopped until then (the "Test the connection" button tries once).`,
+          fr: `${address} refuse l’identifiant ou le mot de passe : vérifiez-les, puis enregistrez de nouveau la configuration. Lectures arrêtées d’ici là (le bouton « Tester la connexion » fait un essai).`,
+        },
   failing: (address, err, wait) => ({
     en: `${address} could not be read (${reason(err).en}): new try in ${delay(wait).en}.`,
     fr: `${address} n’a pas pu être lu (${reason(err).fr}) : nouvel essai dans ${delay(wait).fr}.`,

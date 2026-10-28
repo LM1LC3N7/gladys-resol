@@ -97,12 +97,17 @@ export const ONE_HOUR = HOUR;
  * - energy (kWh): 200 kW covers the largest solar thermal systems a RESOL
  *   controller drives (about 300 m² of collectors); 2 kWh of slack covers a
  *   counter shown in whole kWh;
- * - hours (h): an hour counter runs one hour per hour at most; 2 h of slack
- *   covers a counter shown in whole hours.
+ * - hours (h, the operating seconds turned into hours): an hour counter runs
+ *   one hour per hour at most; 2 h of slack covers a counter shown in whole
+ *   hours;
+ * - volumes (l, m³): 20 m³/h covers the flow of a large heat meter; 100 l
+ *   (0.1 m³) of slack.
  */
 export const COUNTER_LIMITS = {
   energy: { rate: 200, slack: 2 },
   hours: { rate: 1, slack: 2 },
+  volume_l: { rate: 20_000, slack: 100 },
+  volume_m3: { rate: 20, slack: 0.1 },
 };
 /** A lifetime counter above this (kWh or h) is a glitch. */
 export const COUNTER_MAX = 1_000_000_000;

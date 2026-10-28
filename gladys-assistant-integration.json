@@ -99,8 +99,8 @@
       "timeout_seconds": 30,
       "label": { "en": "Accept the held counter", "fr": "Accepter le compteur retenu" },
       "description": {
-        "en": "Only when the status shows a lifetime counter held back (heat quantity or operating hours: a drop after a reset or a new controller, or a jump) and it is right. First click: lists what is held. Second click (after a few seconds, within 5 min): accepts exactly that. Saving the configuration never accepts anything.",
-        "fr": "Seulement quand l'état affiche un compteur à vie retenu (quantité de chaleur ou heures de fonctionnement : une baisse après une remise à zéro ou un nouveau régulateur, ou un saut) et qu'il est juste. Premier clic : liste ce qui est retenu. Second clic (après quelques secondes, dans les 5 min) : accepte exactement cela. Enregistrer la configuration n'accepte jamais rien."
+        "en": "Only when the status shows a lifetime counter held back (heat quantity, operating hours or total volume: a drop after a reset or a new controller, or a jump) and it is right. First click: lists what is held. Second click (after a few seconds, within 5 min): accepts exactly that. Saving the configuration never accepts anything.",
+        "fr": "Seulement quand l'état affiche un compteur à vie retenu (quantité de chaleur, heures de fonctionnement ou volume total : une baisse après une remise à zéro ou un nouveau régulateur, ou un saut) et qu'il est juste. Premier clic : liste ce qui est retenu. Second clic (après quelques secondes, dans les 5 min) : accepte exactement cela. Enregistrer la configuration n'accepte jamais rien."
       }
     }
   ]

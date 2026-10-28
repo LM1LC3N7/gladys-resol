@@ -33,10 +33,16 @@ sa langue (gardez le VSF à jour) :
 - pressions (bar) ;
 - vitesses des pompes (%), débits (l/h), puissances (W), rayonnement
   (W/m²)… : l'unité est dans le nom ;
-- **compteurs à vie** : quantités de chaleur (kWh, « lifetime » dans le nom)
-  et heures de fonctionnement (h) ;
-- compteurs d'une période (aujourd'hui, semaine, mois, année) : de simples
-  capteurs, qui reviennent à 0 normalement.
+- **compteurs à vie** (« lifetime » dans le nom) : quantités de chaleur
+  (kWh), heures de fonctionnement (h ; les secondes de fonctionnement de
+  certains régulateurs sont converties en heures) et volumes totaux (l, m³) ;
+- compteurs d'une période (aujourd'hui, semaine, mois, année, semaine
+  précédente…) : de simples capteurs, qui reviennent à 0 normalement ; les
+  réglages en heures ou en secondes (temps de montée, durée du mélangeur…) et
+  les volumes maximaux sont aussi de simples capteurs ;
+- une quantité de chaleur découpée par le régulateur en champs Wh, kWh et MWh
+  est publiée une fois, recomposée en kWh (ou pas du tout quand le régulateur
+  donne aussi le total).
 
 Les valeurs sans unité (masques d'erreur, versions, dates, heures du jour)
 ne sont pas publiées. Les quantités de chaleur sont de la **chaleur**, pas de
@@ -48,8 +54,9 @@ seraient comptées comme de l'électricité).
 1. Donnez au KM2 / DL2 / DL3 une adresse fixe dans votre box.
 2. Dans Gladys, installez l'intégration et remplissez :
    - **Adresse** : son adresse IP ; ajoutez un port seulement s'il n'est pas
-     80 (`:3333` pour le json-live-data-server). `https://` est refusé :
-     l'appareil répond en HTTP simple ;
+     80 (`:3333` pour le json-live-data-server). `https://` est refusé : cette
+     intégration ne parle qu'en HTTP simple (le mot de passe partirait sans
+     protection là où vous attendez du HTTPS) ;
    - **Identifiant** : celui de l'interface web (`admin` par défaut) ;
    - **Mot de passe** : celui de l'interface web (voir plus haut) ;
    - **Filtre** (DL2 / DL3, facultatif) : l'identifiant d'un filtre de
@@ -71,30 +78,35 @@ ni à une reconnexion, ni après un redémarrage du conteneur (il attend
 l'intervalle plus une minute après la dernière lecture). Une nouvelle adresse,
 un nouvel identifiant ou un nouveau mot de passe est lu tout de suite.
 
-- **Identifiant ou mot de passe refusé** (HTTP 401 ou 403, ou erreur à la
-  connexion JSON-RPC) : les lectures s'arrêtent jusqu'à l'enregistrement de
+- **Identifiant ou mot de passe refusé** (HTTP 401 ou 403 à la connexion ou
+  aux données en direct, ou erreur à la connexion JSON-RPC autre qu'une erreur
+  de protocole) : les lectures s'arrêtent jusqu'à l'enregistrement de
   nouveaux identifiants ou un clic sur **Tester la connexion** (un essai par
-  clic). Un appareil injoignable, une absence de réponse, une réponse
-  inattendue, un filtre inconnu ou un KM2 sans mot de passe n'est pas un
-  refus : nouvel essai après 1 min, puis jusqu'à toutes les 15 min.
+  clic) ; sans mot de passe saisi, l'état dit que l'appareil en demande un.
+  Un appareil injoignable, une absence de réponse, une réponse inattendue, un
+  401 / 403 à l'identité de l'appareil (aucun identifiant n'y est envoyé),
+  une erreur de protocole JSON-RPC, un filtre inconnu ou un KM2 sans mot de
+  passe n'est pas un refus : nouvel essai après 1 min, puis jusqu'à toutes les 15 min.
 - **Identité** : les valeurs ne vont qu'aux appareils du numéro de série lu
   dans la même lecture. Un autre numéro de série à la même adresse a ses
   propres appareils.
 - **Valeurs figées** : un paquet VBus dont l'horodatage ne bouge plus depuis
-  15 min (le régulateur ne l'envoie plus) n'est plus publié ; l'état le
-  signale.
+  15 min (le régulateur ne l'envoie plus) n'est plus publié, aussi après un
+  redémarrage de l'intégration (les horodatages sont gardés dans `/data`) ;
+  l'état le signale.
 - Une valeur que l'appareil marque comme absente (texte vide) n'est jamais
   publiée comme 0.
 
 ## Compteurs à vie
 
-Une quantité de chaleur ou un compteur d'heures ne fait que monter. Chaque
-compteur passe par une garde :
+Une quantité de chaleur, un compteur d'heures ou un volume total ne fait que
+monter. Chaque compteur passe par une garde :
 
 - 0, une valeur manquante ou un texte n'est jamais publié ;
 - une **baisse** (remise à zéro, régulateur remplacé) ou un **saut** (plus de
   200 kW en moyenne plus 2 kWh pour la chaleur, plus d'une heure par heure plus
-  2 h pour les heures) depuis la dernière valeur est **retenu** : la dernière
+  2 h pour les heures, plus de 20 m³ par heure plus 100 l pour les volumes)
+  depuis la dernière valeur est **retenu** : la dernière
   valeur acceptée est renvoyée, l'état l'affiche, et le temps ne le confirme
   jamais (la garde compte le temps écoulé de l'intégration : une horloge
   corrigée pendant qu'elle tourne n'y change rien ; à son redémarrage, elle
@@ -102,10 +114,13 @@ compteur passe par une garde :
   ramenée à maintenant) ;
 - s'il est juste, cliquez deux fois sur **Accepter le compteur retenu** (le
   premier clic liste, le second, de 3 s à 5 min plus tard, accepte exactement
-  ce qui a été listé). Enregistrer la configuration n'accepte rien.
+  ce qui a été listé). Acceptée, la valeur devient le nouveau plancher : une
+  valeur plus basse est de nouveau retenue. Enregistrer la configuration
+  n'accepte rien.
 
-Un compteur de période dont le nom n'est pas reconnu (les mots « aujourd'hui »,
-« semaine », « mois », « année » en français, anglais, allemand, italien,
+Les noms sont lus mot à mot (aussi `Wmz1_ValueToday_Wh`). Un compteur de
+période dont le nom n'est pas reconnu (les mots « aujourd'hui », « hier »,
+« semaine », « mois », « année » et les précédents en français, anglais, allemand, italien,
 néerlandais et espagnol) est traité comme un compteur à vie : sa remise à 0
 est alors retenue, jamais publiée comme une baisse.
 

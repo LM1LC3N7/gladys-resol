@@ -29,7 +29,10 @@ logged, read-only, the lifetime counters guarded.
 The DLx JSON format and the emulation of a DL2 by the json-live-data-server
 were checked against the documentation and the sources of resol-vbus
 (<https://github.com/danielwippermann/resol-vbus>, MIT License, copyright (c)
-2013-present Daniel Wippermann); no code of it is copied nor run.
+2013-present Daniel Wippermann); no code of it is copied nor run in the
+integration. The names of the counters of its VBus specification file
+(`src/vbus_specification.vsf`, English, German and French) are listed in
+`test/fixtures/vsf-names.json`, to test their classification.
 
 ```
 MIT License

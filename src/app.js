@@ -65,12 +65,12 @@ import {
   TEST_ANSWER_WITHIN,
   TICK,
 } from './constants.js';
-import { buildDevice, ids, publishedFields, valueOf } from './devices.js';
+import { buildDevice, counterKindOf, ids, publishedFields, valueOf } from './devices.js';
 import { IndexGuard } from './guard.js';
 import { T } from './i18n.js';
 import { ResolClient } from './resol/client.js';
 import { cleanText, parseLive } from './resol/model.js';
-import { createFileStore, fingerprint, readState } from './store.js';
+import { MAX_PACKETS, createFileStore, fingerprint, readState } from './store.js';
 
 const defaultTimers = { setTimeout, clearTimeout, setInterval, clearInterval };
 
@@ -87,16 +87,6 @@ function lastValueOf(device, featureId) {
   const value = Number(raw);
   const at = Date.parse(feature?.last_value_changed ?? '');
   return Number.isFinite(value) && value > 0 && Number.isFinite(at) ? { value, at } : undefined;
-}
-
-/** The kind of a lifetime counter from its feature key (src/devices.js kindOf), else undefined. */
-export function counterKindOf(featureId) {
-  const key = String(featureId ?? '')
-    .split(':')
-    .at(-1);
-  if (key.endsWith('_kwh_total')) return 'energy';
-  if (key.endsWith('_h_total')) return 'hours';
-  return undefined;
 }
 
 /** A memory-only digest of the log-in fields (never written anywhere). */
@@ -142,8 +132,6 @@ export class ResolApp {
     this.readAt = undefined;
     this.otherSerial = false;
     this.saveFailed = false;
-    /** By `<serial>_<packet>`: the device time stamp of the packet and when it last moved (monotonic). */
-    this.packetSeen = new Map();
     /** By counter feature external id: IndexGuard. */
     this.guards = new Map();
     /** The first click of "Accept the held counter": `{ at, listedAt, list }`, in memory only. */
@@ -201,6 +189,14 @@ export class ResolApp {
       this.kept.lastAttemptAt > 0
         ? mono - Math.max(0, now - this.kept.lastAttemptAt) + ATTEMPT_SAVE_EVERY
         : undefined;
+    // The packets seen before the restart: when their time stamp last moved,
+    // on this process's clock (a frozen packet stays stale after a restart).
+    this.packetSeen = new Map(
+      Object.entries(this.kept.packets).map(([key, { at, changedAt }]) => [
+        key,
+        { at, mono: mono - Math.max(0, now - changedAt) },
+      ]),
+    );
   }
 
   /** Wall minus session clock, now: /data keeps the dates of the guards on the wall clock. */
@@ -567,6 +563,7 @@ export class ResolApp {
       refusal: this.kept.refusal,
       info: this.kept.info,
       counters,
+      packets: this.kept.packets,
     };
     const key = JSON.stringify(state);
     if (!force && key === this.savedKey && !this.saveFailed) {
@@ -713,14 +710,25 @@ export class ResolApp {
 
   /** Notes when the time stamp of each packet last moved (monotonic). */
   trackPackets(serial, live, mono) {
+    const now = this.now();
     for (const packet of live.packets) {
       const key = `${serial}_${packet.id}`;
       const seen = this.packetSeen.get(key);
       if (packet.at === undefined) {
         this.packetSeen.delete(key);
+        delete this.kept.packets[key];
       } else if (!seen || seen.at !== packet.at) {
         this.packetSeen.set(key, { at: packet.at, mono });
+        this.kept.packets[key] = { at: packet.at, changedAt: now };
       }
+    }
+    // /data keeps the most recent MAX_PACKETS.
+    const keys = Object.keys(this.kept.packets);
+    if (keys.length > MAX_PACKETS) {
+      keys
+        .sort((a, b) => this.kept.packets[a].changedAt - this.kept.packets[b].changedAt)
+        .slice(0, keys.length - MAX_PACKETS)
+        .forEach((key) => delete this.kept.packets[key]);
     }
   }
 
@@ -781,7 +789,7 @@ export class ResolApp {
       this.guards.set(
         id,
         new IndexGuard(
-          clamp(lastValueOf(created, id)),
+          clamp(toSession(lastValueOf(created, id))),
           guardState,
           sessionNow,
           COUNTER_LIMITS[counterKindOf(id)],
@@ -908,7 +916,7 @@ export class ResolApp {
     const now = this.now();
     const mono = this.monotonic();
     if (this.kept.refusal) {
-      await this.setStatus(false, T.refused(address));
+      await this.setStatus(false, T.refused(address, this.config.password === ''));
       return;
     }
     if (this.lastError) {
@@ -1034,7 +1042,11 @@ export class ResolApp {
     const mono = this.monotonic();
     const fresh = this.isFresh(mono);
     if (this.kept.refusal) {
-      lines.push(T.test.failed(address, { code: 'refused' }));
+      lines.push(
+        T.test.failed(address, {
+          code: this.config.password === '' ? 'password_asked' : 'refused',
+        }),
+      );
     } else if (this.lastError) {
       lines.push(T.test.failed(address, this.lastError));
     } else if (fresh) {

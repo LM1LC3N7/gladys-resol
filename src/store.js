@@ -2,7 +2,8 @@
 // What must survive a restart of the container (a small JSON file under
 // /data, the only writable place): the instant of the last read (written at
 // most once a minute), a refusal of the log-in (a final stop), the guards of
-// the lifetime counters, and the identity of the device last read (serial
+// the lifetime counters, the time stamp of each VBus packet and when it last
+// moved, and the identity of the device last read (serial
 // number, product and version of the KM2 / DL2 / DL3: nothing secret).
 //
 // No secret is ever written: neither the user name nor the password. Only
@@ -29,6 +30,10 @@ export const DEFAULT_STATE_FILE = '/data/resol-state.json';
 const MAX_FILE = 512 * 1024;
 /** The guarded counters kept, at most. */
 const MAX_COUNTERS = 600;
+/** The VBus packets whose time stamp is kept, at most. */
+export const MAX_PACKETS = 64;
+/** The key of a packet: `<serial>_<packet id>`. */
+const PACKET_KEY = /^[0-9a-z]{4,32}_[0-9a-z_]{1,48}$/;
 
 /**
  * A JSON file: `load()` (sync: `{ data }`, `{ data: {} }` when absent,
@@ -152,6 +157,21 @@ export function readState(raw, now) {
       if (COUNTER_ID.test(id) && isObject(state)) counters[id] = state;
     }
   }
+  // The device time stamp of each VBus packet and when it last moved (wall
+  // clock): a packet frozen before a restart stays stale.
+  const packets = Object.create(null);
+  if (isObject(data.packets)) {
+    for (const [key, seen] of Object.entries(data.packets).slice(0, MAX_PACKETS)) {
+      const at = finite(seen?.at);
+      const changedAt = finite(seen?.changedAt);
+      if (PACKET_KEY.test(key) && at !== undefined && changedAt !== undefined) {
+        // A date in the future (the wall clock went back across the restart):
+        // the age of the packet is unknown, taken as old (stale until its time
+        // stamp moves, at the next read for a live packet).
+        packets[key] = { at, changedAt: changedAt > now ? 0 : changedAt };
+      }
+    }
+  }
   return {
     salt,
     address,
@@ -160,6 +180,7 @@ export function readState(raw, now) {
     refusal: address ? (validRefusal(data.refusal) ?? null) : null,
     info: validInfo(data.info) ?? null,
     counters,
+    packets,
   };
 }
 

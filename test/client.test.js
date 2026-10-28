@@ -235,3 +235,21 @@ test('a dropped connection is "closed"; a reply that is not HTTP is "protocol"',
   const err = await new ResolClient().read(creds(srv)).catch((e) => e);
   assert.ok(['closed', 'unreachable'].includes(err.code), err.code);
 });
+
+test('no refusal for what carries no credential, nor for a JSON-RPC protocol error (m2, m3)', async (t) => {
+  const srv = await km2({ [`GET ${PATHS.INFO}`]: reply(403, 'forbidden') });
+  t.after(() => srv.close());
+  const err = await rejectsWith(new ResolClient().read(creds(srv)), 'http');
+  assert.equal(err.status, 403);
+  srv.routes[`GET ${PATHS.INFO}`] = reply(401, 'no');
+  await rejectsWith(new ResolClient().read(creds(srv)), 'http');
+  srv.routes[`GET ${PATHS.INFO}`] = reply(200, infoText({ product: 'KM2' }));
+  for (const code of [-32700, -32600, -32601, -32602, -32603]) {
+    srv.routes[`POST ${PATHS.KM2}`] = [{ id: '1', error: { code, message: 'x' } }];
+    await rejectsWith(new ResolClient().read(creds(srv)), 'protocol');
+  }
+  for (const code of [-32000, 1, undefined]) {
+    srv.routes[`POST ${PATHS.KM2}`] = [{ id: '1', error: { code, message: 'login failed' } }];
+    await rejectsWith(new ResolClient().read(creds(srv)), 'refused');
+  }
+});

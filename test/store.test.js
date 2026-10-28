@@ -69,3 +69,25 @@ test('the fingerprint of a refusal: 8 bits, salted, many passwords share it', ()
   }
   assert.notEqual(other, undefined);
 });
+
+test('readState: the packets seen, a date in the future taken as old', () => {
+  const now = Date.UTC(2026, 9, 24);
+  const state = readState(
+    {
+      packets: {
+        '001e66000abc_00_0010_7e11_0100': { at: 5, changedAt: now - 1000 },
+        '001e66000abc_00_0010_7e12_0100': { at: 5, changedAt: now + 1000 },
+        'bad:key': { at: 5, changedAt: now },
+        '001e66000abc_00_0010_7e13_0100': { at: 'x', changedAt: now },
+      },
+    },
+    now,
+  );
+  assert.deepEqual(
+    { ...state.packets },
+    {
+      '001e66000abc_00_0010_7e11_0100': { at: 5, changedAt: now - 1000 },
+      '001e66000abc_00_0010_7e12_0100': { at: 5, changedAt: 0 },
+    },
+  );
+});
